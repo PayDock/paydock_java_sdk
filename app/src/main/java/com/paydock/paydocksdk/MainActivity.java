@@ -72,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
 
                                 //new Charges().add(charge);
                                 //new Charges().get(request);
-                                ChargeRefundResponse refund = new Charges().refund("5944d0708365e074bf46da37", new BigDecimal("10"));
+                                //ChargeRefundResponse refund = new Charges().refund("5944d0708365e074bf46da37", new BigDecimal("10"));
+                                new Customers().get();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

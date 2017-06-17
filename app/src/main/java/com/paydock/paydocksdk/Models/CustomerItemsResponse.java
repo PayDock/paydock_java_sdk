@@ -3,6 +3,7 @@ package com.paydock.paydocksdk.Models;
 
 import com.paydock.paydocksdk.Models.Response;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class CustomerItemsResponse  extends Response 
@@ -161,11 +162,11 @@ public class CustomerItemsResponse  extends Response
 
     public static class Statistics   
     {
-        private int total_collected_amount;
-        public int get_total_collected_amount() {
+        private BigDecimal total_collected_amount;
+        public BigDecimal get_total_collected_amount() {
             return total_collected_amount;
         }
-        public void set_total_collected_amount(int value) {
+        public void set_total_collected_amount(BigDecimal value) {
             total_collected_amount = value;
         }
 

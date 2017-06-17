@@ -10,7 +10,6 @@ import com.paydock.paydocksdk.Models.Customer;
 import com.paydock.paydocksdk.Models.PaymentSource;
 
 
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
