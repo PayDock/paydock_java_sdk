@@ -24,17 +24,17 @@ import java.net.URL;
 */
 public class ServiceHelper  implements IServiceHelper
 {
-    static {
-        try
-        {
-            // set to TLS1.2
-            System.setProperty("https.protocols", "TLS1.2");
-        }
-        catch (Exception __dummyStaticConstructorCatchVar0)
-        {
-            throw new ExceptionInInitializerError(__dummyStaticConstructorCatchVar0);
-        }
-    }
+//    static {
+//        try
+//        {
+//            // set to TLS1.2
+//            System.setProperty("https.protocols", "TLS1.2");
+//        }
+//        catch (Exception __dummyStaticConstructorCatchVar0)
+//        {
+//            throw new ExceptionInInitializerError(__dummyStaticConstructorCatchVar0);
+//        }
+//    }
 //    /*
 //    * Call the API, throws ResponseException on any errors
 //    *
@@ -47,13 +47,13 @@ public class ServiceHelper  implements IServiceHelper
         String url = Config.baseUrl() + endpoint;
         URL obj = new URL(url);
         HttpURLConnection request = (HttpURLConnection) obj.openConnection();
-        request.setRequestMethod(method.toString());
-        request.setRequestProperty("Accept","*/*");
-        request.setRequestProperty("Content-Type","application/json");
+        String test  = method.toString();
+        request.setRequestMethod(test);
+        request.setRequestProperty("content-type","application/json");
         request.setRequestProperty("x-user-secret-key", Config.getSecretKey());
-
-
         request.setUseCaches (false);
+
+
 
         if (method == HttpMethod.POST || method == HttpMethod.PUT)
         {

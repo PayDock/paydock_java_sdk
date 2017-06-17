@@ -3,9 +3,11 @@ package com.paydock.paydocksdk.Tools;
 
 
 import java.net.URLEncoder;
+import java.text.DateFormat;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class UrlExtensionMethods
 {
@@ -25,7 +27,7 @@ public class UrlExtensionMethods
 
     public static String appendParameter(String url, String parameterName, Date value) throws Exception {
         if (value != null) {
-            String df = (new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())).format(value);
+            String df = (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZZZZZ", Locale.getDefault())).format(value);
             return addUrlParameter(url, parameterName, df);
         }
         return url;

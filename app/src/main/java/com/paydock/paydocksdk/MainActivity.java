@@ -14,6 +14,8 @@ import com.paydock.paydocksdk.Tools.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -36,14 +38,11 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_notifications:
                     try {
-//                        Config.initialise(Environment.Sandbox, "c3de8f40ebbfff0fb74c11154274c080dfb8e3f9", "8b2dad5fcf18f6f504685a46af0df82216781f3b");
-                        Config.initialise(Environment.Sandbox, "3160c5cf95577de7916454509fe5e33a31f74bb3", "8b2dad5fcf18f6f504685a46af0df82216781f3b");
+                        Config.initialise(Environment.Sandbox, "c3de8f40ebbfff0fb74c11154274c080dfb8e3f9", "8b2dad5fcf18f6f504685a46af0df82216781f3b");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
 
-                    for (int i = 0; i<2000; i++)
-                {
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                                 customer.set_email("test@email.com");
                                 PaymentSource payment_source = new PaymentSource();
                                 payment_source.set_gateway_id("58b60d8a6da7e425d6e4f6c7");
-                                payment_source.set_gateway_id("5939f255c5efa415a6724b8a");
                                 payment_source.set_card_name("Test Name");
                                 payment_source.set_card_number("4111111111111111");
                                 payment_source.set_expire_month("10");
@@ -66,8 +64,15 @@ public class MainActivity extends AppCompatActivity {
                                 customer.set_payment_source(payment_source);
                                 charge.set_customer(customer);
 
-                                new Charges().add(charge);
-                                //new Charges().get();
+                                ChargeSearchRequest request = new ChargeSearchRequest();
+                                request.set_created_at_from(new GregorianCalendar(2017, 5, 14).getTime()); // GregorianCalendar(year, month, date, hrs, min, sec) // month 0-11 not 1-12
+                                //request.set_created_at_to(new GregorianCalendar(2017, 5, 16).getTime());
+                                request.set_created_at_to(new Date());
+                                request.set_gateway_id("58b60d8a6da7e425d6e4f6c7");
+
+                                //new Charges().add(charge);
+                                //new Charges().get(request);
+                                ChargeRefundResponse refund = new Charges().refund("5944d0708365e074bf46da37", new BigDecimal("10"));
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -75,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }).start();
 
-                }
+
 
                     mTextMessage.setText(R.string.title_notifications);
                     return true;

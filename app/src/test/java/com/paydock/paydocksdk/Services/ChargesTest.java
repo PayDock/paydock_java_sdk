@@ -1,14 +1,14 @@
 package com.paydock.paydocksdk.Services;
 
+import com.paydock.paydocksdk.Models.ChargeItemResponse;
 import com.paydock.paydocksdk.Models.ChargeItemsResponse;
+import com.paydock.paydocksdk.Models.ChargeRefundResponse;
 import com.paydock.paydocksdk.Models.ChargeRequest;
 import com.paydock.paydocksdk.Models.ChargeResponse;
 import com.paydock.paydocksdk.Models.ChargeSearchRequest;
 import com.paydock.paydocksdk.Models.Customer;
 import com.paydock.paydocksdk.Models.PaymentSource;
-import com.paydock.paydocksdk.Services.Charges;
-import com.paydock.paydocksdk.Services.Config;
-import com.paydock.paydocksdk.Services.Environment;
+
 
 
 import org.junit.Assert;
@@ -17,17 +17,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.math.BigDecimal;
-import java.security.KeyStore;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
-
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManagerFactory;
 
 import static org.junit.Assert.*;
 
@@ -47,7 +37,7 @@ public class ChargesTest {
     private ChargeResponse CreateBasicCharge(BigDecimal amount, String gatewayId, String customerEmail) throws Exception {
         ChargeRequest charge = new ChargeRequest();
         charge.set_currency("AUD");
-        charge.set_amount(new BigDecimal("17.2"));
+        charge.set_amount(amount);
             Customer customer = new Customer();
             customer.set_first_name("Justin");
             customer.set_last_name("Timberlake");
@@ -73,8 +63,8 @@ public class ChargesTest {
 
     @Test
     public void add() throws Exception {
-        ChargeResponse result = CreateBasicCharge(new BigDecimal("10"), GatewayId, "test@email.com");
-        Assert.assertTrue(result.get_IsSuccess());
+        ChargeResponse charge = CreateBasicCharge(new BigDecimal("8"), GatewayId, "test@email.com");
+        Assert.assertTrue(charge.get_IsSuccess());
     }
 
     @Test
@@ -91,17 +81,24 @@ public class ChargesTest {
 
     @Test
     public void get2() throws Exception {
-
+        ChargeResponse charge = CreateBasicCharge(new BigDecimal("9"), GatewayId, "test@email.com");
+        ChargeItemResponse result = new Charges().get(charge.get_resource().get_data().get_id());
+        Assert.assertTrue(result.get_IsSuccess());
     }
 
     @Test
     public void refund() throws Exception {
+        ChargeResponse charge = CreateBasicCharge(new BigDecimal("11"), GatewayId, "test@email.com");
+        ChargeRefundResponse refund = new Charges().refund(charge.get_resource().get_data().get_id(), new BigDecimal("11"));
+        Assert.assertTrue(refund.get_IsSuccess());
 
     }
 
     @Test
     public void archive() throws Exception {
-
+        ChargeResponse charge = CreateBasicCharge(new BigDecimal("12"), GatewayId, "test@email.com");
+        ChargeRefundResponse refund = new Charges().archive(charge.get_resource().get_data().get_id());
+        Assert.assertTrue(refund.get_IsSuccess());
     }
 
 }

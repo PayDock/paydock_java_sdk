@@ -45,6 +45,7 @@ public class Charges  implements ICharges
     *  @param request Charge data
     *  @return Charge response
     */
+
     public ChargeResponse add(ChargeRequest request) throws Exception {
         String requestData = new Gson().toJson(request);
         String responseJson = _serviceHelper.callPaydock("charges", HttpMethod.POST, requestData);
@@ -112,8 +113,8 @@ public class Charges  implements ICharges
     */
     public ChargeRefundResponse refund(String chargeId, BigDecimal amount) throws Exception {
         URLEncoder.encode(chargeId, "UTF-8");
-        String json = String.format("{{\"amount\" : \"{0}\"}}", amount);
-        String responseJson = _serviceHelper.callPaydock("charges/" + chargeId + "refunds", HttpMethod.POST, json);
+        String json = String.format("{\"amount\" : \"%s\"}", amount);
+        String responseJson = _serviceHelper.callPaydock("charges/" + chargeId + "/refunds", HttpMethod.POST, json);
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
         ChargeRefundResponse response = gson.fromJson(responseJson, ChargeRefundResponse.class);
         return response;

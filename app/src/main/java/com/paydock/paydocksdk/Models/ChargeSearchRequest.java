@@ -1,6 +1,7 @@
 package com.paydock.paydocksdk.Models;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class ChargeSearchRequest
 {
@@ -44,7 +45,7 @@ public class ChargeSearchRequest
         company_id = value;
     }
 
-    private Date created_at_from = new Date(); // Could be null
+    private Date created_at_from = new GregorianCalendar(2000, 0, 1).getTime(); // Could be null
     public Date get_created_at_from() {
         return created_at_from;
     }

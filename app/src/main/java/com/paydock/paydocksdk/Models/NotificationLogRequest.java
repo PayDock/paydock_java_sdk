@@ -2,6 +2,7 @@
 package com.paydock.paydocksdk.Models;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class NotificationLogRequest   
 {
@@ -37,20 +38,19 @@ public class NotificationLogRequest
         type = value;
     }
 
-    private Date created_at_from;
+    private Date created_at_from = new GregorianCalendar(2000, 0, 1).getTime();
     public Date get_created_at_from() {
         return created_at_from;
     }
-
     public void set_created_at_from(Date value) {
         created_at_from = value;
     }
 
-    private Date created_at_to;
+
+    private Date created_at_to = new Date();
     public Date get_created_at_to() {
         return created_at_to;
     }
-
     public void set_created_at_to(Date value) {
         created_at_to = value;
     }
@@ -59,7 +59,6 @@ public class NotificationLogRequest
     public String get_parent_id() {
         return parent_id;
     }
-
     public void set_parent_id(String value) {
         parent_id = value;
     }
@@ -68,7 +67,6 @@ public class NotificationLogRequest
     public String get_destination() {
         return destination;
     }
-
     public void set_destination(String value) {
         destination = value;
     }
