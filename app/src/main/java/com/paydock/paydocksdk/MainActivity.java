@@ -73,7 +73,18 @@ public class MainActivity extends AppCompatActivity {
                                 //new Charges().add(charge);
                                 //new Charges().get(request);
                                 //ChargeRefundResponse refund = new Charges().refund("5944d0708365e074bf46da37", new BigDecimal("10"));
-                                new Customers().get();
+                                //new Customers().get();
+
+
+                                ExternalCheckoutRequest link = new ExternalCheckoutRequest();
+                                link.setgateway_id("58ede3577f8ce1233621d1bb");
+                                link.setmode("test");
+                                link.settype("paypal");
+                                link.setsuccess_redirect_url("http://success.com");
+                                link.seterror_redirect_url("http://error.com");
+
+                                ExternalCheckoutResponse response = new ExternalCheckout().create(link);
+
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

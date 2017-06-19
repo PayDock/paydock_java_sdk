@@ -28,7 +28,7 @@ public class Customers  implements ICustomers
     }
 
     /**
-    * Adds a customer to Paydok
+    * Adds a customer to Paydock
     * 
     *  @param request Stores the customer information to add
     *  @return details of the created customer

@@ -11,7 +11,6 @@ import com.paydock.paydocksdk.Tools.HttpMethod;
 import com.paydock.paydocksdk.Tools.IServiceHelper;
 import com.paydock.paydocksdk.Tools.ServiceHelper;
 
-import java.math.BigDecimal;
 import java.net.URLEncoder;
 
 
@@ -19,7 +18,7 @@ import java.net.URLEncoder;
  * Created by Mark on 17/06/2017.
  */
 
-public class Gateways {
+public class Gateways implements IGateways{
 
     protected IServiceHelper _serviceHelper;// = new IServiceHelper();
     /**
