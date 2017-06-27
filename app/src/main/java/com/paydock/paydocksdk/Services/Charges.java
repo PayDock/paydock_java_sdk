@@ -16,6 +16,7 @@ import com.paydock.paydocksdk.Tools.ServiceHelper;
 
 import java.math.BigDecimal;
 import java.net.URLEncoder;
+import java.text.ParseException;
 
 import static com.paydock.paydocksdk.Tools.UrlExtensionMethods.appendParameter;
 
@@ -49,8 +50,9 @@ public class Charges  implements ICharges
     public ChargeResponse add(ChargeRequest request) throws Exception {
         String requestData = new Gson().toJson(request);
         String responseJson = _serviceHelper.callPaydock("charges", HttpMethod.POST, requestData);
-        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
-        ChargeResponse response = gson.fromJson(responseJson, ChargeResponse.class);
+//        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+//        ChargeResponse response = gson.fromJson(responseJson, ChargeResponse.class);
+        ChargeResponse response = new Gson().fromJson(responseJson, ChargeResponse.class);
         return response;
     }
 
@@ -100,7 +102,7 @@ public class Charges  implements ICharges
         URLEncoder.encode(chargeId, "UTF-8");
         String responseJson = _serviceHelper.callPaydock("charges/" + chargeId, HttpMethod.GET, "");
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
-        ChargeItemResponse response = gson.fromJson(responseJson, ChargeItemResponse.class);
+        ChargeItemResponse response =  gson.fromJson(responseJson, ChargeItemResponse.class);
         return response;
     }
 

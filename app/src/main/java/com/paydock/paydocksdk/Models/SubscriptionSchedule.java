@@ -23,7 +23,7 @@ public class SubscriptionSchedule
         frequency = value;
     }
 
-    private Date start_date = new GregorianCalendar(2000, 0, 1).getTime();
+    private Date start_date = null; //new GregorianCalendar(2000, 0, 1).getTime();
     public Date get_start_date() {
         return start_date;
     }
@@ -31,7 +31,7 @@ public class SubscriptionSchedule
         start_date = value;
     }
 
-    private Date end_date = new GregorianCalendar(2030, 0, 1).getTime();
+    private Date end_date = null; //new GregorianCalendar(2030, 0, 1).getTime();
     public Date get_end_date() {
         return end_date;
     }

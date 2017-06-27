@@ -45,7 +45,7 @@ public class ChargeSearchRequest
         company_id = value;
     }
 
-    private Date created_at_from = new GregorianCalendar(2000, 0, 1).getTime(); // Could be null
+    private Date created_at_from = null;// new GregorianCalendar(2000, 0, 1).getTime(); // Could be null
     public Date get_created_at_from() {
         return created_at_from;
     }
@@ -53,7 +53,7 @@ public class ChargeSearchRequest
         created_at_from = value;
     }
 
-    private Date created_at_to = new Date(); // Could be null
+    private Date created_at_to = null; //new Date(); // Could be null
     public Date get_created_at_to() {
         return created_at_to;
     }

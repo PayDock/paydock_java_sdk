@@ -59,24 +59,37 @@ public class ServiceHelper  implements IServiceHelper
         {
             request.setDoOutput(true);
             request.setRequestProperty("Content-Length","" + Integer.toString(json.getBytes().length));
-            DataOutputStream wr = new DataOutputStream (request.getOutputStream());
+
             try
             {
-                {
-                    wr.writeBytes (json);
-                }
-            }
-            finally
-            {
+                DataOutputStream wr = new DataOutputStream (request.getOutputStream());
+                wr.writeBytes (json);
                 wr.flush ();
                 wr.close ();
+
+            }catch (Exception ex) {
+                return null;
             }
+
         }
 
 
         try
         {
-            BufferedReader rd = new BufferedReader(new InputStreamReader(request.getInputStream()));
+            request.connect();
+            int httpCode = request.getResponseCode();
+
+            BufferedReader rd = null;
+
+            if (httpCode == 200 || httpCode == 201)
+            {
+                rd = new BufferedReader(new InputStreamReader(request.getInputStream()));
+            }
+            else
+            {
+                rd = new BufferedReader(new InputStreamReader(request.getErrorStream()));
+            }
+
             String line;
             StringBuffer response = new StringBuffer();
 

@@ -37,7 +37,7 @@ public class ExternalCheckout {
     public ExternalCheckoutResponse create(ExternalCheckoutRequest request) throws Exception {
         String requestData = new Gson().toJson(request);
         String responseJson = _serviceHelper.callPaydock("payment_sources/external_checkout", HttpMethod.POST, requestData);
-        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+        Gson gson = new Gson();
         ExternalCheckoutResponse response = gson.fromJson(responseJson, ExternalCheckoutResponse.class);
         return response;
     }

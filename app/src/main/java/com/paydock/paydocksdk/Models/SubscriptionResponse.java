@@ -11,7 +11,6 @@ public class SubscriptionResponse  extends Response
     public Resource get_resource() {
         return resource;
     }
-
     public void set_resource(Resource value) {
         resource = value;
     }

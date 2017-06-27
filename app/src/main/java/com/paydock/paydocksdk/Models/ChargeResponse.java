@@ -8,6 +8,7 @@ import java.util.Date;
 
 public class ChargeResponse  extends Response 
 {
+
     private Resource resource;
     public Resource get_resource() {
         return resource;
@@ -77,7 +78,7 @@ public class ChargeResponse  extends Response
             company_id = value;
         }
 
-        private Date created_at = new Date();
+        private Date created_at = null; //new Date();
         public Date get_created_at() {
             return created_at;
         }
@@ -101,7 +102,7 @@ public class ChargeResponse  extends Response
             reference = value;
         }
 
-        private Date updated_at = new Date();
+        private Date updated_at = null; //new Date();
         public Date get_updated_at() {
             return updated_at;
         }
@@ -358,7 +359,7 @@ public class ChargeResponse  extends Response
             amount = value;
         }
 
-        private Date created_at = new Date();
+        private Date created_at = null; // new Date();
         public Date get_created_at() {
             return created_at;
         }

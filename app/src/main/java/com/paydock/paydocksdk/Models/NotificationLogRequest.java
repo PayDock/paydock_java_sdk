@@ -38,7 +38,7 @@ public class NotificationLogRequest
         type = value;
     }
 
-    private Date created_at_from = new GregorianCalendar(2000, 0, 1).getTime();
+    private Date created_at_from = null; // new GregorianCalendar(2000, 0, 1).getTime();
     public Date get_created_at_from() {
         return created_at_from;
     }
@@ -47,7 +47,7 @@ public class NotificationLogRequest
     }
 
 
-    private Date created_at_to = new Date();
+    private Date created_at_to = null; // new Date();
     public Date get_created_at_to() {
         return created_at_to;
     }

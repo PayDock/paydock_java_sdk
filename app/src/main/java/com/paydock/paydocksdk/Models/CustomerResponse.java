@@ -44,7 +44,7 @@ public class CustomerResponse  extends Response
             __v = value;
         }
 
-        private Date created_at = new Date();
+        private Date created_at = null; // new Date();
         public Date get_created_at() {
             return created_at;
         }
@@ -52,7 +52,7 @@ public class CustomerResponse  extends Response
             created_at = value;
         }
 
-        private Date updated_at = new Date();
+        private Date updated_at = null; // new Date();
         public Date get_updated_at() {
             return updated_at;
         }
@@ -173,7 +173,7 @@ public class CustomerResponse  extends Response
 
     public static class Payment_Sources   
     {
-        private Date updated_at = new Date();
+        private Date updated_at = null; // new Date();
         public Date get_updated_at() {
             return updated_at;
         }
@@ -317,7 +317,7 @@ public class CustomerResponse  extends Response
             status = value;
         }
 
-        private Date created_at = new Date();
+        private Date created_at = null; // new Date();
         public Date get_created_at() {
             return created_at;
         }

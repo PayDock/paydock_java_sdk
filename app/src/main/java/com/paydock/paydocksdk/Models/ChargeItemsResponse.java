@@ -78,7 +78,7 @@ public class ChargeItemsResponse  extends Response
             amount = value;
         }
 
-        private Date created_at = new Date();
+        private Date created_at = null; //new Date();
         public Date get_created_at() {
             return created_at;
         }
@@ -118,7 +118,7 @@ public class ChargeItemsResponse  extends Response
             reference = value;
         }
 
-        private Date updated_at = new Date();
+        private Date updated_at = null; //new Date();
         public Date get_updated_at() {
             return updated_at;
         }

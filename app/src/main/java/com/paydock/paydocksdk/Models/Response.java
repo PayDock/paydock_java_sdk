@@ -2,32 +2,25 @@ package com.paydock.paydocksdk.Models;
 
 public class Response   
 {
-    private int status;
-    public int get_status() {
-        return status;
-    }
-    public void set_status(int value) {
-        status = value;
-    }
+    private Integer status;
+    public int get_status() {return status;}
+    public void set_status(Integer value) {status = value;}
 
     private String error;
-    public String get_error() {
-        return error;
-    }
-    public void set_error(String value) {
-        error = value;
-    }
+    public String get_error() {return error;}
+    public void set_error(String value) {error = value;}
 
-    public boolean get_IsSuccess() throws Exception {
+
+    public Boolean get_IsSuccess() throws Exception {
         return get_status() == 200 || get_status() == 201;
     }
 
-    private String JsonResponse;
-    public String get_JsonResponse() {
-        return JsonResponse;
+    private String jsonResponse;
+    public String get_jsonResponse() {
+        return jsonResponse;
     }
-    public void set_JsonResponse(String value) {
-        JsonResponse = value;
+    public void set_jsonResponse(String value) {
+        jsonResponse = value;
     }
 
 }
