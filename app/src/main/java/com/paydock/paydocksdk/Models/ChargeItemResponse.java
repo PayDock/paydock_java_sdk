@@ -6,13 +6,12 @@ import com.paydock.paydocksdk.Models.Response;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class ChargeItemResponse  extends Response 
+public class ChargeItemResponse extends Response
 {
     private Resource resource;
     public Resource get_resource() {
         return resource;
     }
-
     public void set_resource(Resource value) {
         resource = value;
     }

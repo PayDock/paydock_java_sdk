@@ -4,20 +4,14 @@ package com.paydock.paydocksdk.Models;
 
 public class ErrorResponse
 {
-    private int Status;
-    public int get_Status() {
-        return Status;
-    }
-    public void set_Status(int value) {
-        Status = value;
-    }
 
-    private String ErrorMessage;
-    public String get_ErrorMessage() {
-        return ErrorMessage;
+
+    private String message;
+    public String get_message() {
+        return message;
     }
-    public void set_ErrorMessage(String value) {
-        ErrorMessage = value;
+    public void set_message(String value) {
+        message = value;
     }
 
 //    private dynamic ExtendedInformation = new dynamic();
@@ -28,14 +22,6 @@ public class ErrorResponse
 //    public void set_ExtendedInformation(dynamic value) {
 //        ExtendedInformation = value;
 //    }
-
-    private String JsonResponse;
-    public String get_JsonResponse() {
-        return JsonResponse;
-    }
-    public void set_JsonResponse(String value) {
-        JsonResponse = value;
-    }
 
 }
 

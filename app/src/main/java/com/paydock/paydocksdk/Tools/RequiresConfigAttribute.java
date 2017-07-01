@@ -1,6 +1,5 @@
 
 package com.paydock.paydocksdk.Tools;
-import com.paydock.paydocksdk.Services.*;
 
 public class RequiresConfigAttribute  //extends Attribute
 {

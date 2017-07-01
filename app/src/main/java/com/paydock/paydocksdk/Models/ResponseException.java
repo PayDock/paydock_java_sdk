@@ -1,9 +1,9 @@
 package com.paydock.paydocksdk.Models;
 
-import com.paydock.paydocksdk.Models.ErrorResponse;
-
-public class ResponseException  extends Exception 
+public class ResponseException  extends Exception
 {
+    private static final long serialVersionUID = 1L;
+
     private ErrorResponse errorResponse;
     public ErrorResponse get_ErrorResponse() {
         return errorResponse;

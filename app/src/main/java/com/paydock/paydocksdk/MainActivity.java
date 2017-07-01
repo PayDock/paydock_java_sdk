@@ -9,15 +9,6 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import com.paydock.paydocksdk.Models.*;
 import com.paydock.paydocksdk.Services.*;
-import com.paydock.paydocksdk.Tools.*;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.LinkedHashMap;
-import java.util.List;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
                     mTextMessage.setText(R.string.title_home);
                     return true;
                 case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.navigation_notifications:
                     try {
@@ -46,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             try {
-                                ChargeRequest charge = new ChargeRequest();
+//                                ChargeRequest charge = new ChargeRequest();
 //                                charge.set_currency("AUD");
-                                charge.set_amount(new BigDecimal("19.2"));
+//                                charge.set_amount(new BigDecimal("19.2"));
 //                                Customer customer = new Customer();
 //                                customer.set_first_name("Justin");
 //                                customer.set_last_name("Timberlake");
@@ -69,21 +59,19 @@ public class MainActivity extends AppCompatActivity {
                                 //request.set_created_at_to(new Date());
                                 //request.set_gateway_id("58b60d8a6da7e425d6e4f6c7");
 
-                                //new Charges().add(charge);
+                              //new Charges().add(charge);
                                 //new Charges().get(request);
-                                //new Charges().get("58b60d8a6da7e425d6e4f6c7");
+                                //new Charges().get("595741d2e0beda7f78c3f05b");
                                 //ChargeRefundResponse refund = new Charges().refund("5944d0708365e074bf46da37", new BigDecimal("10"));
                                 //new Customers().get();
 
 
-                               //ExternalCheckoutRequest link = new ExternalCheckoutRequest();
-                               //link.setgateway_id("58ede3577f8ce1233621d1bb");
-                               //link.setmode("test");
-                               //link.settype("paypal");
-                               //link.setsuccess_redirect_url("http://success.com");
-                               //link.seterror_redirect_url("http://error.com");
-                                //ExternalCheckoutResponse response = new ExternalCheckout().create(link);
-                                //new DateUtils().DateUtils(null);
+                               ExternalCheckoutRequest link = new ExternalCheckoutRequest();
+                               link.set_gateway_id("58ede3577f8ce1233621d1bb");
+                               link.set_mode("test");
+                               link.set_success_redirect_url("http://success.com");
+                               link.set_error_redirect_url("http://error.com");
+                                ExternalCheckoutResponse response = new ExternalCheckout().create(link);
 
 
                             } catch (Exception e) {

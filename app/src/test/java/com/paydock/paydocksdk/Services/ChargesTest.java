@@ -31,6 +31,7 @@ public class ChargesTest {
     @Before
     public void init() throws Exception {
         Config.initialise(Environment.Sandbox, SecretKey, PublicKey);
+        //System.setProperty("https.protocols", "TLS1.2");
     }
 
     private ChargeResponse CreateBasicCharge(BigDecimal amount, String gatewayId, String customerEmail) throws Exception {

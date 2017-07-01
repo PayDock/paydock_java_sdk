@@ -5,52 +5,53 @@ package com.paydock.paydocksdk.Models;
 public class ExternalCheckoutRequest   
 {
     private String mode;
-    public String getmode() {
+    public String get_mode() {
         return mode;
     }
-    public void setmode(String value) {
+    public void set_mode(String value) {
         mode = value;
     }
 
-    private String type;
-    public String gettype() {
-        return type;
-    }
-    public void settype(String value) {
-        type = value;
-    }
-
     private String gateway_id;
-    public String getgateway_id() {
+    public String get_gateway_id() {
         return gateway_id;
     }
-    public void setgateway_id(String value) {
+    public void set_gateway_id(String value) {
         gateway_id = value;
     }
 
     private String success_redirect_url;
-    public String getsuccess_redirect_url() {
+    public String get_success_redirect_url() {
         return success_redirect_url;
     }
-    public void setsuccess_redirect_url(String value) {
+    public void set_success_redirect_url(String value) {
         success_redirect_url = value;
     }
 
     private String error_redirect_url;
-    public String geterror_redirect_url() {
+    public String get_error_redirect_url() {
         return error_redirect_url;
     }
-    public void seterror_redirect_url(String value) {
+    public void set_error_redirect_url(String value) {
         error_redirect_url = value;
     }
 
     private String description;
-    public String getdescription() {
+    public String get_description() {
         return description;
     }
-    public void setdescription(String value) {
+    public void set_description(String value) {
         description = value;
     }
+
+    private String checkout_token;
+    public String get_checkout_token() {
+        return checkout_token;
+    }
+    public void set_checkout_token(String value) {
+        checkout_token = value;
+    }
+
 }
 
 

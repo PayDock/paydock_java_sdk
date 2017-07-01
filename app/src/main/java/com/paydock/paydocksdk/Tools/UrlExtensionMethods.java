@@ -1,13 +1,10 @@
 
 package com.paydock.paydocksdk.Tools;
 
-
 import java.net.URLEncoder;
-import java.text.DateFormat;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
-import java.util.TimeZone;
 
 public class UrlExtensionMethods
 {

@@ -13,10 +13,8 @@ import com.paydock.paydocksdk.Tools.HttpMethod;
 import com.paydock.paydocksdk.Tools.IServiceHelper;
 import com.paydock.paydocksdk.Tools.ServiceHelper;
 
-
 import java.math.BigDecimal;
 import java.net.URLEncoder;
-import java.text.ParseException;
 
 import static com.paydock.paydocksdk.Tools.UrlExtensionMethods.appendParameter;
 
@@ -26,54 +24,30 @@ import static com.paydock.paydocksdk.Tools.UrlExtensionMethods.appendParameter;
 public class Charges  implements ICharges
 {
     protected IServiceHelper _serviceHelper;// = new IServiceHelper();
-    /**
-    * Service locator style constructor
-    */
+
     public Charges() throws Exception {
         _serviceHelper = new ServiceHelper();
     }
 
-    /**
-    * Dependency injection constructor to enable testing
-    */
+
     public Charges(IServiceHelper serviceHelper) throws Exception {
         _serviceHelper = serviceHelper;
     }
 
-    /**
-    * Add a charge
-    * 
-    *  @param request Charge data
-    *  @return Charge response
-    */
 
     public ChargeResponse add(ChargeRequest request) throws Exception {
         String requestData = new Gson().toJson(request);
         String responseJson = _serviceHelper.callPaydock("charges", HttpMethod.POST, requestData);
-//        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
-//        ChargeResponse response = gson.fromJson(responseJson, ChargeResponse.class);
-        ChargeResponse response = new Gson().fromJson(responseJson, ChargeResponse.class);
-        return response;
+        Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+        return gson.fromJson(responseJson, ChargeResponse.class);
     }
 
-    /**
-    * Retrieve full list of charges, limited to 1000
-    * 
-    *  @return List of charges
-    */
     public ChargeItemsResponse get() throws Exception {
         String responseJson = _serviceHelper.callPaydock("charges", HttpMethod.GET, "");
-        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
-        ChargeItemsResponse response = gson.fromJson(responseJson, ChargeItemsResponse.class);
-        return response;
+        Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+        return gson.fromJson(responseJson, ChargeItemsResponse.class);
     }
 
-    /**
-    * Retrieve a filtered list of charges, limited to 1000
-    * 
-    *  @param request filter parameters
-    *  @return List of charges
-    */
     public ChargeItemsResponse get(ChargeSearchRequest request) throws Exception {
         String url = "charges/";
         url = appendParameter(url, "skip", request.get_skip());
@@ -87,53 +61,31 @@ public class Charges  implements ICharges
         url = appendParameter(url, "status", request.get_status());
         url = appendParameter(url, "archived", request.get_archived());
         String responseJson = _serviceHelper.callPaydock(url, HttpMethod.GET, "");
-        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
-        ChargeItemsResponse response = gson.fromJson(responseJson, ChargeItemsResponse.class);
-        return response;
+        Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+        return gson.fromJson(responseJson, ChargeItemsResponse.class);
     }
 
-    /**
-    * Retrieve a single charge
-    * 
-    *  @param chargeId id of the charge to retreive
-    *  @return charge data
-    */
     public ChargeItemResponse get(String chargeId) throws Exception {
         URLEncoder.encode(chargeId, "UTF-8");
         String responseJson = _serviceHelper.callPaydock("charges/" + chargeId, HttpMethod.GET, "");
-        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
-        ChargeItemResponse response =  gson.fromJson(responseJson, ChargeItemResponse.class);
-        return response;
+        Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+        return gson.fromJson(responseJson, ChargeItemResponse.class);
     }
 
-    /**
-    * Refund a transaction
-    * 
-    *  @param chargeId id of the charge to refund
-    *  @param amount amount to refund, can be used to issue partial refunds
-    *  @return information on the transaction
-    */
     public ChargeRefundResponse refund(String chargeId, BigDecimal amount) throws Exception {
         URLEncoder.encode(chargeId, "UTF-8");
         String json = String.format("{\"amount\" : \"%s\"}", amount);
         String responseJson = _serviceHelper.callPaydock("charges/" + chargeId + "/refunds", HttpMethod.POST, json);
-        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
-        ChargeRefundResponse response = gson.fromJson(responseJson, ChargeRefundResponse.class);
-        return response;
+        Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+        return gson.fromJson(responseJson, ChargeRefundResponse.class);
     }
 
-    /**
-    * Archive a transaction
-    * 
-    *  @param chargeId id of the charge to archive
-    *  @return information on the transaction
-    */
+
     public ChargeRefundResponse archive(String chargeId) throws Exception {
         URLEncoder.encode(chargeId, "UTF-8");
         String responseJson = _serviceHelper.callPaydock("charges/" + chargeId, HttpMethod.DELETE, "");
-        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
-        ChargeRefundResponse response = gson.fromJson(responseJson, ChargeRefundResponse.class);
-        return response;
+        Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+        return gson.fromJson(responseJson, ChargeRefundResponse.class);
     }
 
 }
