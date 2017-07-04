@@ -1,5 +1,7 @@
 package com.paydock.paydocksdk.Services;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.paydock.paydocksdk.Models.ChargeItemResponse;
 import com.paydock.paydocksdk.Models.ChargeItemsResponse;
 import com.paydock.paydocksdk.Models.ChargeRefundResponse;
@@ -18,8 +20,6 @@ import org.junit.runners.JUnit4;
 
 import java.math.BigDecimal;
 
-import static org.junit.Assert.*;
-
 @RunWith(JUnit4.class)
 public class ChargesTest {
 
@@ -31,33 +31,31 @@ public class ChargesTest {
     @Before
     public void init() throws Exception {
         Config.initialise(Environment.Sandbox, SecretKey, PublicKey);
-        //System.setProperty("https.protocols", "TLS1.2");
     }
 
-    private ChargeResponse CreateBasicCharge(BigDecimal amount, String gatewayId, String customerEmail) throws Exception {
+    private ChargeResponse CreateBasicCharge(BigDecimal chargeAmount, String gatewayId, String customerEmail) throws Exception {
         ChargeRequest charge = new ChargeRequest();
-        charge.set_currency("AUD");
-        charge.set_amount(amount);
+        charge.currency = "AUD";
+        charge.amount = chargeAmount;
             Customer customer = new Customer();
-            customer.set_first_name("Justin");
-            customer.set_last_name("Timberlake");
-            customer.set_email("test@email.com");
+            customer.first_name = "Justin";
+            customer.last_name = "Timberlake";
+            customer.email = "test@email.com";
                 PaymentSource payment_source = new PaymentSource();
-                payment_source.set_gateway_id("58b60d8a6da7e425d6e4f6c7");
-                payment_source.set_card_name("Test Name");
-                payment_source.set_card_number("4111111111111111");
-                payment_source.set_expire_month("10");
-                payment_source.set_expire_year("2020");
-                payment_source.set_card_ccv("123");
-            customer.set_payment_source(payment_source);
-        charge.set_customer(customer);
-
+                payment_source.gateway_id = "58b60d8a6da7e425d6e4f6c7";
+                payment_source.card_name = "Test Name";
+                payment_source.card_number = "4111111111111111";
+                payment_source.expire_month = "10";
+                payment_source.expire_year = "2020";
+                payment_source.card_ccv = "123";
+            customer.payment_source = payment_source;
+        charge.customer = customer;
         return new Charges().add(charge);
     }
 
     private ChargeItemsResponse CreateSearchCharge(String gatewayId) throws Exception {
         ChargeSearchRequest request = new ChargeSearchRequest();
-        request.set_gateway_id(gatewayId);
+        request.gateway_id = gatewayId;
         return new Charges().get(request);
     }
 
@@ -82,14 +80,14 @@ public class ChargesTest {
     @Test
     public void get2() throws Exception {
         ChargeResponse charge = CreateBasicCharge(new BigDecimal("9"), GatewayId, "test@email.com");
-        ChargeItemResponse result = new Charges().get(charge.get_resource().get_data().get_id());
+        ChargeItemResponse result = new Charges().get(charge.resource.data._id);
         Assert.assertTrue(result.get_IsSuccess());
     }
 
     @Test
     public void refund() throws Exception {
         ChargeResponse charge = CreateBasicCharge(new BigDecimal("11"), GatewayId, "test@email.com");
-        ChargeRefundResponse refund = new Charges().refund(charge.get_resource().get_data().get_id(), new BigDecimal("11"));
+        ChargeRefundResponse refund = new Charges().refund(charge.resource.data._id, new BigDecimal("11"));
         Assert.assertTrue(refund.get_IsSuccess());
 
     }
@@ -97,7 +95,7 @@ public class ChargesTest {
     @Test
     public void archive() throws Exception {
         ChargeResponse charge = CreateBasicCharge(new BigDecimal("12"), GatewayId, "test@email.com");
-        ChargeRefundResponse refund = new Charges().archive(charge.get_resource().get_data().get_id());
+        ChargeRefundResponse refund = new Charges().archive(charge.resource.data._id);
         Assert.assertTrue(refund.get_IsSuccess());
     }
 

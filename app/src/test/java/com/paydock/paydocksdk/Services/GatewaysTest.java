@@ -28,11 +28,11 @@ public class GatewaysTest {
 
     private GatewayResponse addGateway() throws Exception {
         GatewayRequest gateway = new GatewayRequest();
-            gateway.set_type("Brain");
-            gateway.set_name("BraintreeTesting");
-            gateway.set_merchant("r7pcwvkbkgjfzk99");
-            gateway.set_username("n8nktcb42fy8ttgt");
-            gateway.set_password("c865e194d750148b93284c0c026e5f2a");
+            gateway.type = "Brain";
+            gateway.name = "BraintreeTesting";
+            gateway.merchant = "r7pcwvkbkgjfzk99";
+            gateway.username = "n8nktcb42fy8ttgt";
+            gateway.password = "c865e194d750148b93284c0c026e5f2a";
         return new Gateways().add(gateway);
     }
 
@@ -60,8 +60,8 @@ public class GatewaysTest {
     public void update() throws Exception {
         GatewayResponse gateway = addGateway();
         GatewayUpdateRequest request = new GatewayUpdateRequest();
-        request.set_id(gateway.get_resource().get_data().get_id());
-        request.set_name("BraintreeTesting2");
+        request._id = gateway.resource.data._id;
+        request.name = "BraintreeTesting2";
         GatewayItemResponse result = new Gateways().update(request);
         Assert.assertTrue(result.get_IsSuccess());
 
@@ -70,7 +70,7 @@ public class GatewaysTest {
     @Test
     public void delete() throws Exception {
         GatewayResponse Gateway = addGateway();
-        GatewayItemResponse delete = new Gateways().delete(Gateway.get_resource().get_data().get_id());
+        GatewayItemResponse delete = new Gateways().delete(Gateway.resource.data._id);
         Assert.assertTrue(delete.get_IsSuccess());
     }
 

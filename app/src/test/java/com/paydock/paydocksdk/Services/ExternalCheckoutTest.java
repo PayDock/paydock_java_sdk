@@ -27,10 +27,10 @@ public class ExternalCheckoutTest {
     public void createLink() throws Exception {
 
         ExternalCheckoutRequest request = new ExternalCheckoutRequest();
-            request.set_gateway_id(PaypalGatewayId);
-            request.set_mode("test");
-            request.set_success_redirect_url("http://success.com");
-            request.set_error_redirect_url("http://error.com");
+            request.gateway_id = PaypalGatewayId;
+            request.mode = "test";
+            request.success_redirect_url = "http://success.com";
+            request.error_redirect_url = "http://error.com";
 
         ExternalCheckoutResponse response = new ExternalCheckout().create(request);
         Assert.assertTrue(response.get_IsSuccess());

@@ -13,27 +13,21 @@ import java.net.URL;
 
 public class ServiceHelper  implements IServiceHelper
 {
-    static {
-        try
-        {
-            System.setProperty("https.protocols", "TLSv1.2");
-        }
-        catch (Exception __dummyStaticConstructorCatchVar0)
-        {
-            throw new ExceptionInInitializerError(__dummyStaticConstructorCatchVar0);
-        }
-    }
+    private static final int HTTP_REQUEST_TIMEOUT = 30000;
 
-    public String callPaydock(String endpoint, HttpMethod method, String json) throws Exception {
+    public String callPaydock(String endpoint, HttpMethod method, String json, boolean excludeSecretKey) throws Exception {
         String url = Config.baseUrl() + endpoint;
         URL obj = new URL(url);
         HttpsURLConnection request = (HttpsURLConnection) obj.openConnection();
         SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
         sslContext.init(null,null,null);
         request.setSSLSocketFactory(sslContext.getSocketFactory());
-        String test  = method.toString();
-        request.setRequestMethod(test);
+        request.setConnectTimeout(HTTP_REQUEST_TIMEOUT);
+        request.setReadTimeout(HTTP_REQUEST_TIMEOUT);
+        String methodString  = method.toString();
+        request.setRequestMethod(methodString);
         request.setRequestProperty("content-type","application/json");
+        if (!excludeSecretKey)
         request.setRequestProperty("x-user-secret-key", Config.getSecretKey());
         request.setUseCaches (false);
 
@@ -75,11 +69,6 @@ public class ServiceHelper  implements IServiceHelper
             }
             rd.close();
             return response.toString();
-        }
-        catch (Exception ex)
-        {
-            //convertException(ex);
-            return null;
         }
         finally
         {
