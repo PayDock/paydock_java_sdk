@@ -24,7 +24,7 @@ import java.math.BigDecimal;
 public class ChargesTest {
 
     String SecretKey = "c3de8f40ebbfff0fb74c11154274c080dfb8e3f9";
-    String GatewayId = "58b60d8a6da7e425d6e4f6c7";
+    String GatewayId = "58dba2dc5219634f922f79c3";
     String PaypalGatewayId = "58ede3577f8ce1233621d1bb";
     String PublicKey = "b2dad5fcf18f6f504685a46af0df82216781f3";
 
@@ -42,9 +42,9 @@ public class ChargesTest {
             customer.last_name = "Timberlake";
             customer.email = "test@email.com";
                 PaymentSource payment_source = new PaymentSource();
-                payment_source.gateway_id = "58b60d8a6da7e425d6e4f6c7";
+                payment_source.gateway_id = gatewayId;
                 payment_source.card_name = "Test Name";
-                payment_source.card_number = "4111111111111111";
+                payment_source.card_number = "5520000000000000";
                 payment_source.expire_month = "10";
                 payment_source.expire_year = "2020";
                 payment_source.card_ccv = "123";

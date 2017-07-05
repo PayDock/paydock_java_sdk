@@ -13,7 +13,7 @@ import java.net.URL;
 
 public class ServiceHelper  implements IServiceHelper
 {
-    private static final int HTTP_REQUEST_TIMEOUT = 30000;
+    private static final int HTTP_REQUEST_TIMEOUT = 10000;
 
     public String callPaydock(String endpoint, HttpMethod method, String json, boolean excludeSecretKey) throws Exception {
         String url = Config.baseUrl() + endpoint;
