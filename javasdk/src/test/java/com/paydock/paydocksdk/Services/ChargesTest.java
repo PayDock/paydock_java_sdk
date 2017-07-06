@@ -1,7 +1,5 @@
 package com.paydock.paydocksdk.Services;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.paydock.paydocksdk.Models.ChargeItemResponse;
 import com.paydock.paydocksdk.Models.ChargeItemsResponse;
 import com.paydock.paydocksdk.Models.ChargeRefundResponse;
