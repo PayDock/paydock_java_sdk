@@ -15,6 +15,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.lang.reflect.Type;
+
+import static junit.framework.TestCase.assertEquals;
+
 
 @RunWith(JUnit4.class)
 public class CustomersTest {
@@ -32,8 +36,10 @@ public class CustomersTest {
     private CustomerResponse CreateBasicCustomer(String customerEmail) throws Exception {
         CustomerRequest customer = new CustomerRequest();
         customer.first_name = "John";
-        customer.first_name = "Smith";
+        customer.last_name = "Smith";
         customer.email = customerEmail;
+        customer.reference = "CustomerReference";
+        customer.phone = "+61412123123";
             PaymentSource payment_source = new PaymentSource();
             payment_source.gateway_id = GatewayId;
             payment_source.card_name = "Test Name";

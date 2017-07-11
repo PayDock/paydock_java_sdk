@@ -8,18 +8,18 @@ dependencies {
 
 ext {
     bintrayRepo = 'javaSDK'
-    bintrayName = 'javaSDK'
+    bintrayName = 'javasdk'
 
     publishedGroupId = 'com.paydock'
-    libraryName = 'javaSDK'
-    artifact = 'javaSDK'
+    libraryName = 'javasdk'
+    artifact = 'javasdk'
 
     libraryDescription = 'A Java SDK for PayDock API.'
 
     siteUrl = 'https://www.paydock.com'
     gitUrl = 'https://github.com/PayDockDev/paydock_java_sdk'
 
-    libraryVersion = '0.9'
+    libraryVersion = '0.9.3'
 
     developerId = ''
     developerName = 'Mark Cardamis'

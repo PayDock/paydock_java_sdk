@@ -14,6 +14,7 @@ public class ChargeSearchRequest
     public String search;
     public String status;
     public Boolean archived;
+    public String transaction_external_id;
 }
 
 

@@ -20,7 +20,7 @@ import java.net.URLEncoder;
 
 public class Gateways implements IGateways{
 
-    protected IServiceHelper _serviceHelper;// = new IServiceHelper();
+    protected IServiceHelper _serviceHelper;//
 
     public Gateways() throws Exception {
         _serviceHelper = new ServiceHelper();

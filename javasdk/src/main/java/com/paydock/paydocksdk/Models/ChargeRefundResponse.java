@@ -17,7 +17,7 @@ public class ChargeRefundResponse  extends Response
 
     public static class Data   
     {
-        public int v;
+        public int __v;
         public String _id;
         public BigDecimal amount;
         public String company_id;
@@ -74,7 +74,6 @@ public class ChargeRefundResponse  extends Response
         public String currency;
         public String status;
         public String type;
-        public Date pended_at = null; //new Date();
     }
 }
 

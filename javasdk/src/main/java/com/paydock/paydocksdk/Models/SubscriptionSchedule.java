@@ -12,6 +12,7 @@ public class SubscriptionSchedule
     public Date end_date = null;
     public BigDecimal end_amount_after;
     public BigDecimal end_amount_before;
+    public BigDecimal end_amount_total;
     public Integer end_transactions;
 }
 

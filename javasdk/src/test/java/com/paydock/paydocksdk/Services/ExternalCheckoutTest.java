@@ -25,7 +25,6 @@ public class ExternalCheckoutTest {
 
     @Test
     public void createLink() throws Exception {
-
         ExternalCheckoutRequest request = new ExternalCheckoutRequest();
             request.gateway_id = PaypalGatewayId;
             request.mode = "test";

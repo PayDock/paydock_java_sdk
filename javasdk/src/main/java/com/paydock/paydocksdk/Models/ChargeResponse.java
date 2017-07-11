@@ -16,7 +16,7 @@ public class ChargeResponse  extends Response
     public static class Data
     {
         public String external_id;
-        public int v;
+        public int __v;
         public String _id;
         public BigDecimal amount;
         public String company_id;

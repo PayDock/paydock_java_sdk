@@ -7,7 +7,6 @@ import java.util.Date;
 public class ChargeItemResponse extends Response
 {
     public Resource resource;
-
     public static class Resource
     {
         public String type;

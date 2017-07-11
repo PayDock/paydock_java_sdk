@@ -90,7 +90,7 @@ public class SubscriptionsTest {
     @Test
     public void get1() throws Exception {
         SubscriptionItemsResponse result = SearchSubscription(GatewayId);
-        Assert.assertTrue(result.get_IsSuccess());
+            Assert.assertTrue(result.get_IsSuccess());
     }
 
     @Test

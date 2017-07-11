@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 public class ChargeRefundRequest
 {
-    public String id;
+    public String _id;
     public BigDecimal amount;
 }
 

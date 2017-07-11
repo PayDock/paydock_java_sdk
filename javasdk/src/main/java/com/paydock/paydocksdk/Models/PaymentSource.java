@@ -20,7 +20,7 @@ public class PaymentSource
     public String card_ccv;
     public String address_line1;
     public String address_line2;
-    public String state;
+    public String address_state;
     public String address_country;
     public String address_city;
     public String address_postcode;
