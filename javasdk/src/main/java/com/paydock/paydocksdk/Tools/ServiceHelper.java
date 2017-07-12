@@ -1,21 +1,36 @@
 
 package com.paydock.paydocksdk.Tools;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
+import com.paydock.paydocksdk.Models.ErrorResponse;
+import com.paydock.paydocksdk.Models.ResponseException;
 import com.paydock.paydocksdk.Services.Config;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
-import java.net.URL;
+import javax.xml.ws.WebServiceException;
 
+import java.io.StringReader;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class ServiceHelper  implements IServiceHelper
 {
-    private static final int HTTP_REQUEST_TIMEOUT = 10000;
+    private static final int HTTP_REQUEST_TIMEOUT = 30000;
 
     public String callPaydock(String endpoint, HttpMethod method, String json, boolean excludeSecretKey) throws Exception {
+        String result = null;
         String url = Config.baseUrl() + endpoint;
         URL obj = new URL(url);
         HttpsURLConnection request = (HttpsURLConnection) obj.openConnection();
@@ -62,19 +77,39 @@ public class ServiceHelper  implements IServiceHelper
             }
 
             String line;
-            StringBuffer response = new StringBuffer();
+            StringBuilder response = new StringBuilder();
 
             while((line = rd.readLine()) != null) {
                 response.append(line).append('\n');
             }
             rd.close();
-            return response.toString();
+            result = response.toString();
+
+            if(!(httpCode == 200 || httpCode == 201))
+                ConvertException(result, httpCode);
+
         }
         finally
         {
             request.disconnect();
         }
+        return result;
     }
+
+
+
+
+    private void ConvertException(String result, Integer httpCode) throws Exception {
+        String httpCodeString = httpCode.toString();
+
+        ErrorResponse errorResponse = new ErrorResponse();
+        errorResponse.http_status_code = httpCode;
+        errorResponse.jsonResponse = result;
+        errorResponse.message = JsonUtils.parseResponse(result);
+
+        throw new ResponseException(errorResponse, httpCodeString);
+    }
+
 }
 
 
