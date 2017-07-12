@@ -7,7 +7,6 @@ public class Customer
     public String last_name;
     public String email;
     public String phone;
-    public String reference;
     public String payment_source_id;
     public PaymentSource payment_source;
 }
