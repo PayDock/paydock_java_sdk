@@ -2,11 +2,10 @@ package com.paydock.paydocksdk;
 
 import android.os.AsyncTask;
 
-import com.paydock.paydocksdk.Models.ChargeItemsResponse;
 import com.paydock.paydocksdk.Models.CustomerRequest;
 import com.paydock.paydocksdk.Models.CustomerResponse;
 import com.paydock.paydocksdk.Models.PaymentSource;
-import com.paydock.paydocksdk.Services.Charges;
+import com.paydock.paydocksdk.Models.ResponseException;
 import com.paydock.paydocksdk.Services.Config;
 import com.paydock.paydocksdk.Services.Customers;
 import com.paydock.paydocksdk.Services.Environment;
@@ -53,16 +52,17 @@ public class AddCustomer extends AsyncTask<Void, Void, CustomerResponse>{
         payment_source.card_ccv = "123";
         customer.payment_source = (payment_source);
 
-          CustomerResponse ch = null;
+          CustomerResponse ch = new CustomerResponse();
             try{
                 Config.initialise(Environment.Sandbox, SecretKey, PublicKey);
                 ch =  new Customers().add(customer);
-                if (!ch.get_IsSuccess()){
-                    //handle failure to create customer
-                }
-            }catch (Exception e)
-            {
-                //handle possible error
+            }catch (ResponseException er){
+                //handle Paydock exception
+                ch.error.message = er.errorResponse.message;
+                ch.error.http_status_code = er.errorResponse.http_status_code;
+                ch.error.jsonResponse = er.errorResponse.jsonResponse;
+            }catch (Exception e){
+                //handle general exception
             }
 
         return ch;

@@ -1,13 +1,13 @@
 package com.paydock.paydocksdk;
 
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
-import com.paydock.paydocksdk.Models.ChargeItemsResponse;
 import com.paydock.paydocksdk.Models.ChargeRequest;
 import com.paydock.paydocksdk.Models.ChargeResponse;
 import com.paydock.paydocksdk.Models.Customer;
+import com.paydock.paydocksdk.Models.ErrorResponse;
 import com.paydock.paydocksdk.Models.PaymentSource;
+import com.paydock.paydocksdk.Models.ResponseException;
 import com.paydock.paydocksdk.Services.Charges;
 import com.paydock.paydocksdk.Services.Config;
 import com.paydock.paydocksdk.Services.Environment;
@@ -37,7 +37,7 @@ public class AddCharge extends AsyncTask<Void, Void, ChargeResponse>{
 
     @Override
     protected ChargeResponse doInBackground(Void... arg0) {
-        String SecretKey = "c3de8f40ebbfff0fb74c11154274c080dfb8e3f9";
+        String SecretKey = "c3de8f40ebbfff0fb74c11154274c080dfb8e3f99";
         String GatewayId = "58dba2dc5219634f922f79c3";
         String PaypalGatewayId = "58ede3577f8ce1233621d1bb";
         String PublicKey = "b2dad5fcf18f6f504685a46af0df82216781f3";
@@ -59,21 +59,18 @@ public class AddCharge extends AsyncTask<Void, Void, ChargeResponse>{
         customer.payment_source = payment_source;
         charge.customer = customer;
 
-
-
-
-          ChargeResponse ch = null;
+          ChargeResponse ch = new ChargeResponse();
             try{
                 Config.initialise(Environment.Sandbox, SecretKey, PublicKey);
                 ch =  new Charges().add(charge);
-                if (!ch.get_IsSuccess()){
-                    //handle failure to create charge
-                }
-            }catch (Exception e)
-            {
-                //handle possible error
+            }catch (ResponseException er){
+                //handle Paydock exception
+                ch.error.message = er.errorResponse.message;
+                ch.error.http_status_code = er.errorResponse.http_status_code;
+                ch.error.jsonResponse = er.errorResponse.jsonResponse;
+            }catch (Exception e){
+                //handle general exception
             }
-
         return ch;
     }
 

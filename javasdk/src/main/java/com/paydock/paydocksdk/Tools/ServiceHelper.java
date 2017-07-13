@@ -30,6 +30,7 @@ public class ServiceHelper  implements IServiceHelper
     private static final int HTTP_REQUEST_TIMEOUT = 30000;
 
     public String callPaydock(String endpoint, HttpMethod method, String json, boolean excludeSecretKey) throws Exception {
+
         String result = null;
         String url = Config.baseUrl() + endpoint;
         URL obj = new URL(url);

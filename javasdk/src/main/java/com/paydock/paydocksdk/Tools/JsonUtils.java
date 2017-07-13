@@ -15,7 +15,7 @@ import java.util.Set;
 
 public class JsonUtils {
 
-    public static String parseResponse(String response) throws Exception {
+    public static String parseResponse(String response) {
         String result = null;
         JsonParser parser = new JsonParser();
         JsonElement element = parser.parse(response);

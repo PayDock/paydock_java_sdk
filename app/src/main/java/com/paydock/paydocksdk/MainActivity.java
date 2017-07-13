@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.paydock.paydocksdk.Models.ChargeItemsResponse;
 import com.paydock.paydocksdk.Models.ChargeResponse;
 import com.paydock.paydocksdk.Models.CustomerResponse;
 
@@ -39,12 +38,18 @@ public class MainActivity extends Activity {
             //Here you will receive the result fired from async class
             //of onPostExecute(result) method.
             ChargeResponse ch = output;
-            editText.setText(ch.resource.data.customer.first_name);
-            editText2.setText(ch.resource.data.customer.last_name);
-            editText3.setText(ch.resource.data.customer.email);
-            editText4.setText(ch.resource.data.customer.reference);
-            editText5.setText(ch.resource.data.amount.toString());
-            editText6.setText(ch.resource.data.status);
+            if (ch.resource != null) {
+                editText.setText(ch.resource.data.customer.first_name);
+                editText2.setText(ch.resource.data.customer.last_name);
+                editText3.setText(ch.resource.data.customer.email);
+                editText4.setText(ch.resource.data.customer.reference);
+                editText5.setText(ch.resource.data.amount.toString());
+                editText6.setText(ch.resource.data.status);
+            }else if (ch.error != null){
+                editText.setText(ch.error.http_status_code.toString());
+                editText2.setText(ch.error.message);
+                editText3.setText(ch.error.jsonResponse);
+            }
 
         }).execute());
 
@@ -61,13 +66,18 @@ public class MainActivity extends Activity {
             //Here you will receive the result fired from async class
             //of onPostExecute(result) method.
             CustomerResponse ch = output;
-            editText.setText(ch.resource.data.first_name);
-            editText2.setText(ch.resource.data.last_name);
-            editText3.setText(ch.resource.data.email);
-            editText4.setText(ch.resource.data._id);
-            editText5.setText(ch.resource.data.phone);
-            editText6.setText(ch.resource.data.status);
-
+            if (ch.resource != null) {
+                editText.setText(ch.resource.data.first_name);
+                editText2.setText(ch.resource.data.last_name);
+                editText3.setText(ch.resource.data.email);
+                editText4.setText(ch.resource.data._id);
+                editText5.setText(ch.resource.data.phone);
+                editText6.setText(ch.resource.data.status);
+            }else if (ch.error != null){
+                editText.setText(ch.error.http_status_code.toString());
+                editText2.setText(ch.error.message);
+                editText3.setText(ch.error.jsonResponse);
+            }
         }).execute());
 
     }
