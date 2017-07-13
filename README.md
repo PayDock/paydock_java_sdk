@@ -62,7 +62,7 @@ CustomerRequest customer = new CustomerRequest();
 
           CustomerResponse ch = new CustomerResponse();
             try{
-                Config.initialise(Environment.Sandbox, SecretKey, PublicKey);
+                Config.initialise(Environment.Sandbox, "<your secret key here>", "<your public key here>");
                 ch =  new Customers().add(customer);
             }catch (ResponseException er){
                 //handle Paydock exception
