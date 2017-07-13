@@ -5,7 +5,8 @@ This SDK provides a wrapper around the PayDock REST API.
 For more info on the Paydock API, see our [full documentation](https://docs.paydock.com).
 
 ## Simple example to create a single charge
-``` Java
+```Java
+
 ChargeRequest charge = new ChargeRequest();
         charge.currency = "AUD";
         charge.amount = new BigDecimal(10);
@@ -35,10 +36,12 @@ ChargeRequest charge = new ChargeRequest();
             }catch (Exception e){
                 //handle general exception
             }
+
 ```
 
 ## Simple example to create a customer
-``` Java
+```Java
+
 CustomerRequest customer = new CustomerRequest();
         customer.first_name = "John";
         customer.last_name = "Smith";
@@ -66,4 +69,5 @@ CustomerRequest customer = new CustomerRequest();
             }catch (Exception e){
                 //handle general exception
             }
+
 ```
