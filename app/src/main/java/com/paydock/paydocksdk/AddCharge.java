@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import com.paydock.paydocksdk.Models.ChargeRequest;
 import com.paydock.paydocksdk.Models.ChargeResponse;
 import com.paydock.paydocksdk.Models.Customer;
-import com.paydock.paydocksdk.Models.ErrorResponse;
 import com.paydock.paydocksdk.Models.PaymentSource;
 import com.paydock.paydocksdk.Models.ResponseException;
 import com.paydock.paydocksdk.Services.Charges;
