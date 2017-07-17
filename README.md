@@ -9,7 +9,8 @@ There are different dependency snippets to be inserted in your code based on you
 
 ## Simple example to create a single charge
 
-ChargeRequest charge = new ChargeRequest();
+
+    ChargeRequest charge = new ChargeRequest();
         charge.currency = "AUD";
         charge.amount = new BigDecimal(10);
         Customer customer = new Customer();
@@ -39,12 +40,12 @@ ChargeRequest charge = new ChargeRequest();
                 //handle general exception
             }
 
-```
+
 
 ## Simple example to create a customer
-```Java
 
-CustomerRequest customer = new CustomerRequest();
+
+    CustomerRequest customer = new CustomerRequest();
         customer.first_name = "John";
         customer.last_name = "Smith";
         customer.email = "testing@email.com";
