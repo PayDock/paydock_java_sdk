@@ -8,7 +8,6 @@ To download the library please visit https://bintray.com/markcardamis/javaSDK/ja
 There are different dependency snippets to be inserted in your code based on your selected repository (we support Gradle, Maven or Ivy).
 
 ## Simple example to create a single charge
-```Java
 
 ChargeRequest charge = new ChargeRequest();
         charge.currency = "AUD";
@@ -72,5 +71,3 @@ CustomerRequest customer = new CustomerRequest();
             }catch (Exception e){
                 //handle general exception
             }
-
-```
