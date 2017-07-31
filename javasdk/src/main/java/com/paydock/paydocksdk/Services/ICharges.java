@@ -2,9 +2,7 @@
 package com.paydock.paydocksdk.Services;
 
 import com.paydock.paydocksdk.Models.*;
-
 import java.math.BigDecimal;
-
 
 public interface ICharges
 {
