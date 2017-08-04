@@ -12,21 +12,20 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class ExternalCheckoutTest {
 
-    private String SecretKey = "c3de8f40ebbfff0fb74c11154274c080dfb8e3f9";
-    private String GatewayId = "58b60d8a6da7e425d6e4f6c7";
-    private String PaypalGatewayId = "58ede3577f8ce1233621d1bb";
-    private String PublicKey = "b2dad5fcf18f6f504685a46af0df82216781f3";
-
     @Before
     public void init() throws Exception {
-        Config.initialise(Environment.Sandbox, SecretKey, PublicKey);
+        String secretKey = "c3de8f40ebbfff0fb74c11154274c080dfb8e3f9";
+        String publicKey = "b2dad5fcf18f6f504685a46af0df82216781f3";
+        Config.initialise(Environment.Sandbox, secretKey, publicKey);
     }
 
 
     @Test
     public void createLink() throws Exception {
+        String paypalGatewayId = "58ede3577f8ce1233621d1bb";
+
         ExternalCheckoutRequest request = new ExternalCheckoutRequest();
-            request.gateway_id = PaypalGatewayId;
+        request.gateway_id = paypalGatewayId;
             request.mode = "test";
             request.success_redirect_url = "http://success.com";
             request.error_redirect_url = "http://error.com";

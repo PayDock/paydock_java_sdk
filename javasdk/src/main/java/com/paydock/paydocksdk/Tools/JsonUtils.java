@@ -9,10 +9,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Created by Mark on 12/07/2017.
- */
 
+@SuppressWarnings({"StatementWithEmptyBody", "UnusedAssignment"})
 public class JsonUtils {
 
     public static String parseResponse(String response) {

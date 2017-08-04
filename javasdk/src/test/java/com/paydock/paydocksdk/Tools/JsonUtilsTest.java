@@ -15,9 +15,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Created by Mark on 11/07/2017.
- */
+@SuppressWarnings({"StatementWithEmptyBody", "UnusedAssignment"})
 @RunWith(JUnit4.class)
 public class JsonUtilsTest {
 
@@ -26,7 +24,7 @@ public class JsonUtilsTest {
     @Before
     public void init() throws Exception {
         stringCase[0] = "{\"status\":400,\"error\":{\"message\":\"No gateway type provided\"},\"resource\":{\"type\":\"user\",\"data\":null}}\n"; // Error appears when no gateway type provided while creating
-        stringCase[1] = "{\"status\":400,\"error\":{\"message\":{\"message\":\"Invalid Transaction Details\",\"http_status_code\":400,\"errors\":[{\"gateway_specific_code\":\"invalid_credentials\",\"gateway_specific_description\":\"invalid credentialssss\",\"param_name\":null,\"description\":\"Invalid Transaction Details\"}]}},\"resource\":{\"type\":\"gateway\",\"data\":null}}\n"; // Error appears when credentials are not correct
+        stringCase[1] = "{\"status\":400,\"error\":{\"message\":{\"message\":\"Invalid Transaction Details\",\"http_status_code\":400,\"errors\":[{\"gateway_specific_code\":\"invalid_credentials\",\"gateway_specific_description\":\"invalid credentials\",\"param_name\":null,\"description\":\"Invalid Transaction Details\"}]}},\"resource\":{\"type\":\"gateway\",\"data\":null}}\n"; // Error appears when credentials are not correct
         stringCase[2] = "{\"status\":400,\"error\":{\"message\":\"Credit Card Invalid or Expired\",\"details\":[{\"gateway_specific_code\":\"number\",\"gateway_specific_description\":\"is not a valid card\",\"param_name\":\"number\",\"description\":\"Credit Card Invalid or Expired\"}]}}\n"; // Error appears when credit card is not provided
         stringCase[3] = "{\"status\":400,\"error\":{\"message\":\"Validation Error\",\"details\":[\"No amount provided\"]},\"resource\":{\"type\":\"charge\"}}\n"; // Error appears when some field or fields not valid
         stringCase[4] = "{\"status\":404,\"error\":{\"message\":\"Wrong Api path\"},\"resource\":{\"type\":\"path\",\"data\":null}}\n"; // Error appears when provided resource is not correct

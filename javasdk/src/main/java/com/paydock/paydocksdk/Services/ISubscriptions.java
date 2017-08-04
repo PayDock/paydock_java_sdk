@@ -3,6 +3,7 @@ package com.paydock.paydocksdk.Services;
 
 import com.paydock.paydocksdk.Models.*;
 
+@SuppressWarnings("unused")
 public interface ISubscriptions
 {
     SubscriptionResponse add(SubscriptionRequest request) throws Exception ;

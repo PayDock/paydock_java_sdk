@@ -18,6 +18,7 @@ import org.junit.runners.JUnit4;
 
 import java.math.BigDecimal;
 
+@SuppressWarnings("SameParameterValue")
 @RunWith(JUnit4.class)
 public class ChargesTest {
 

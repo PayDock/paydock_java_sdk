@@ -4,6 +4,7 @@ package com.paydock.paydocksdk.Services;
 import com.paydock.paydocksdk.Models.*;
 import java.math.BigDecimal;
 
+@SuppressWarnings("unused")
 public interface ICharges
 {
     ChargeResponse add(ChargeRequest request) throws Exception ;

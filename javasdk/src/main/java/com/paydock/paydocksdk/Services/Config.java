@@ -2,7 +2,8 @@
 package com.paydock.paydocksdk.Services;
 
 
-public class Config   
+@SuppressWarnings("SameParameterValue")
+public class Config
 {
     private static Environment __Environment = Environment.Sandbox;
     private static Environment getEnvironment() {

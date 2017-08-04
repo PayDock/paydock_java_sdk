@@ -3,6 +3,7 @@ package com.paydock.paydocksdk.Services;
 
 import com.paydock.paydocksdk.Models.*;
 
+@SuppressWarnings("unused")
 public interface ICustomers
 {
     CustomerResponse add(CustomerRequest request) throws Exception ;

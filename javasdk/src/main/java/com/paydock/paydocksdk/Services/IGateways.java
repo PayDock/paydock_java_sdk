@@ -6,10 +6,8 @@ import com.paydock.paydocksdk.Models.GatewayRequest;
 import com.paydock.paydocksdk.Models.GatewayResponse;
 import com.paydock.paydocksdk.Models.GatewayUpdateRequest;
 
-/**
- * Created by Mark on 17/06/2017.
- */
 
+@SuppressWarnings("unused")
 public interface IGateways
 {
     GatewayResponse add(GatewayRequest request) throws Exception ;

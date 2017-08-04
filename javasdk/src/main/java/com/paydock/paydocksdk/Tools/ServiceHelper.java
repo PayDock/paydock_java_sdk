@@ -1,29 +1,17 @@
 
 package com.paydock.paydocksdk.Tools;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
 import com.paydock.paydocksdk.Models.ErrorResponse;
 import com.paydock.paydocksdk.Models.ResponseException;
 import com.paydock.paydocksdk.Services.Config;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
-import javax.xml.ws.WebServiceException;
 
-import java.io.StringReader;
 import java.net.URL;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
 public class ServiceHelper  implements IServiceHelper
 {
@@ -66,7 +54,7 @@ public class ServiceHelper  implements IServiceHelper
         {
             request.connect();
             int httpCode = request.getResponseCode();
-            BufferedReader rd = null;
+            BufferedReader rd;
 
             if (httpCode == 200 || httpCode == 201)
             {

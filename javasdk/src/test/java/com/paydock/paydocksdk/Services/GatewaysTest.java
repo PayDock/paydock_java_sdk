@@ -5,7 +5,6 @@ import com.paydock.paydocksdk.Models.GatewayItemsResponse;
 import com.paydock.paydocksdk.Models.GatewayRequest;
 import com.paydock.paydocksdk.Models.GatewayResponse;
 import com.paydock.paydocksdk.Models.GatewayUpdateRequest;
-import com.paydock.paydocksdk.Models.PaymentSource;
 
 import org.junit.Assert;
 import org.junit.Before;

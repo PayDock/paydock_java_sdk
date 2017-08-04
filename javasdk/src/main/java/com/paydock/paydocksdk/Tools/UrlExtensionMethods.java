@@ -37,12 +37,12 @@ public class UrlExtensionMethods
         return url;
     }
 
-    private static String addUrlParameter(String currrentUrl, String name, String value) throws Exception {
-        if (!currrentUrl.contains("?"))
-            currrentUrl += "?";
+    private static String addUrlParameter(String currentUrl, String name, String value) throws Exception {
+        if (!currentUrl.contains("?"))
+            currentUrl += "?";
         else
-            currrentUrl += "&"; 
-        return currrentUrl + URLEncoder.encode(name, "UTF-8") + "=" + URLEncoder.encode(value, "UTF-8");
+            currentUrl += "&";
+        return currentUrl + URLEncoder.encode(name, "UTF-8") + "=" + URLEncoder.encode(value, "UTF-8");
     }
 
 }

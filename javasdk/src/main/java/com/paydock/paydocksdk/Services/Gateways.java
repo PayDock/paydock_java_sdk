@@ -14,9 +14,6 @@ import com.paydock.paydocksdk.Tools.ServiceHelper;
 import java.net.URLEncoder;
 
 
-/**
- * Created by Mark on 17/06/2017.
- */
 
 public class Gateways implements IGateways{
 

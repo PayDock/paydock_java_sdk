@@ -19,6 +19,7 @@ import org.junit.runners.JUnit4;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@SuppressWarnings("SameParameterValue")
 @RunWith(JUnit4.class)
 public class SubscriptionsTest {
 

@@ -15,11 +15,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import java.lang.reflect.Type;
 
-import static junit.framework.TestCase.assertEquals;
-
-
+@SuppressWarnings("SameParameterValue")
 @RunWith(JUnit4.class)
 public class CustomersTest {
 
