@@ -9,7 +9,7 @@ import com.paydock.paydocksdk.Tools.IServiceHelper;
 import com.paydock.paydocksdk.Tools.ServiceHelper;
 
 
-public class ExternalCheckout {
+public class ExternalCheckout implements IExternalCheckout{
 
     protected IServiceHelper _serviceHelper;
 

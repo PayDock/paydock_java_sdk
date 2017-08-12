@@ -19,7 +19,7 @@ ext {
     siteUrl = 'https://www.paydock.com'
     gitUrl = 'https://github.com/PayDockDev/paydock_java_sdk'
 
-    libraryVersion = '0.9.7'
+    libraryVersion = '0.9.8'
 
     developerId = ''
     developerName = 'Mark Cardamis'

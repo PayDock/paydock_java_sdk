@@ -11,7 +11,7 @@ import com.paydock.paydocksdk.Tools.ServiceHelper;
 
 import java.net.URLEncoder;
 
-public class Tokens   
+public class Tokens implements ITokens
 {
     protected IServiceHelper _serviceHelper;
 
