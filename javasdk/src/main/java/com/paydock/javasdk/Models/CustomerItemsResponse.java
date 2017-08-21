@@ -12,6 +12,10 @@ public class CustomerItemsResponse  extends Response
     {
         public String type;
         public Data[] data;
+        public String query_token;
+        public int count;
+        public int limit;
+        public int skip;
     }
 
     public static class Data   

@@ -2,9 +2,6 @@ package com.paydock.javasdk.Services;
 
 import com.paydock.javasdk.Models.ExternalCheckoutRequest;
 import com.paydock.javasdk.Models.ExternalCheckoutResponse;
-import com.paydock.javasdk.Services.Config;
-import com.paydock.javasdk.Services.Environment;
-import com.paydock.javasdk.Services.ExternalCheckout;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -18,7 +15,7 @@ public class ExternalCheckoutTest {
     @Before
     public void init() throws Exception {
         String secretKey = "c3de8f40ebbfff0fb74c11154274c080dfb8e3f9";
-        String publicKey = "b2dad5fcf18f6f504685a46af0df82216781f3";
+        String publicKey = "8b2dad5fcf18f6f504685a46af0df82216781f3b";
         Config.initialise(Environment.Sandbox, secretKey, publicKey);
     }
 

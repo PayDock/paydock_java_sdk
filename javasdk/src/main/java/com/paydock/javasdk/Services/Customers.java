@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.paydock.javasdk.Models.CustomerItemResponse;
 import com.paydock.javasdk.Models.CustomerItemsResponse;
+import com.paydock.javasdk.Models.CustomerPaymentSourceSearchRequest;
 import com.paydock.javasdk.Models.CustomerRequest;
 import com.paydock.javasdk.Models.CustomerResponse;
 import com.paydock.javasdk.Models.CustomerSearchRequest;
@@ -15,8 +16,6 @@ import com.paydock.javasdk.Tools.ServiceHelper;
 import com.paydock.javasdk.Tools.UrlExtensionMethods;
 
 import java.net.URLEncoder;
-
-import static com.paydock.javasdk.Tools.UrlExtensionMethods.appendParameter;
 
 public class Customers  implements ICustomers
 {
@@ -51,8 +50,21 @@ public class Customers  implements ICustomers
         url = UrlExtensionMethods.appendParameter(url, "sortkey", request.sortkey);
         url = UrlExtensionMethods.appendParameter(url, "sortdirection", request.sortdirection);
         url = UrlExtensionMethods.appendParameter(url, "gateway_id", request.gateway_id);
+        url = UrlExtensionMethods.appendParameter(url, "payment_source_id", request.payment_source_id);
+        url = UrlExtensionMethods.appendParameter(url, "id", request._id);
+        url = UrlExtensionMethods.appendParameter(url, "gateway_id", request.gateway_id);
+        url = UrlExtensionMethods.appendParameter(url, "reference", request.reference);
         url = UrlExtensionMethods.appendParameter(url, "archived", request.archived);
         String responseJson = _serviceHelper.callPaydock(url, HttpMethod.GET, "", false);
+        Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+        return gson.fromJson(responseJson, CustomerItemsResponse.class);
+    }
+
+    public CustomerItemsResponse get(CustomerPaymentSourceSearchRequest request) throws Exception {
+        String url = "customers/payment_sources";
+        URLEncoder.encode(url, "UTF-8");
+        url = UrlExtensionMethods.appendParameter(url, "query_token", request.query_token);
+        String responseJson = _serviceHelper.callPaydock(url, HttpMethod.GET, "", true);
         Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
         return gson.fromJson(responseJson, CustomerItemsResponse.class);
     }

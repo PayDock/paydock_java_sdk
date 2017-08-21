@@ -1,17 +1,14 @@
 package com.paydock.javasdk.Services;
 
-import com.paydock.javasdk.Models.SubscriptionRequest;
-import com.paydock.javasdk.Models.SubscriptionItemsResponse;
-import com.paydock.javasdk.Models.SubscriptionResponse;
-import com.paydock.javasdk.Models.SubscriptionSchedule;
 import com.paydock.javasdk.Models.Customer;
 import com.paydock.javasdk.Models.PaymentSource;
+import com.paydock.javasdk.Models.SubscriptionItemResponse;
+import com.paydock.javasdk.Models.SubscriptionItemsResponse;
+import com.paydock.javasdk.Models.SubscriptionRequest;
+import com.paydock.javasdk.Models.SubscriptionResponse;
+import com.paydock.javasdk.Models.SubscriptionSchedule;
 import com.paydock.javasdk.Models.SubscriptionSearchRequest;
 import com.paydock.javasdk.Models.SubscriptionUpdateRequest;
-import com.paydock.javasdk.Models.SubscriptionItemResponse;
-import com.paydock.javasdk.Services.Config;
-import com.paydock.javasdk.Services.Environment;
-import com.paydock.javasdk.Services.Subscriptions;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -29,7 +26,7 @@ public class SubscriptionsTest {
     String SecretKey = "c3de8f40ebbfff0fb74c11154274c080dfb8e3f9";
     String GatewayId = "58dba2dc5219634f922f79c3";
     String PaypalGatewayId = "58ede3577f8ce1233621d1bb";
-    String PublicKey = "b2dad5fcf18f6f504685a46af0df82216781f3";
+    String PublicKey = "8b2dad5fcf18f6f504685a46af0df82216781f3b";
 
     @Before
     public void init() throws Exception {

@@ -11,6 +11,7 @@ public class CustomerSearchRequest
     public String sortdirection;
     public String gateway_id;
     public String payment_source_id;
+    public String _id;
     public Boolean archived;
     public String reference;
 }

@@ -8,10 +8,10 @@ import com.paydock.javasdk.Services.Config;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
+
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
-
-import java.net.URL;
 
 public class ServiceHelper  implements IServiceHelper
 {
@@ -31,8 +31,11 @@ public class ServiceHelper  implements IServiceHelper
         String methodString  = method.toString();
         request.setRequestMethod(methodString);
         request.setRequestProperty("content-type","application/json");
-        if (!excludeSecretKey)
-        request.setRequestProperty("x-user-secret-key", Config.getSecretKey());
+        if (!excludeSecretKey) {
+            request.setRequestProperty("x-user-secret-key", Config.getSecretKey());
+        } else {
+            request.setRequestProperty("x-user-public-key", Config.getPublicKey());
+        }
         request.setUseCaches (false);
 
         if (method == HttpMethod.POST || method == HttpMethod.PUT)

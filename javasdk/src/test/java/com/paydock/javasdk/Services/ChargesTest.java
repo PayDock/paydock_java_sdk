@@ -1,17 +1,13 @@
 package com.paydock.javasdk.Services;
 
+import com.paydock.javasdk.Models.ChargeItemResponse;
 import com.paydock.javasdk.Models.ChargeItemsResponse;
 import com.paydock.javasdk.Models.ChargeRefundResponse;
 import com.paydock.javasdk.Models.ChargeRequest;
 import com.paydock.javasdk.Models.ChargeResponse;
-import com.paydock.javasdk.Models.ChargeItemResponse;
 import com.paydock.javasdk.Models.ChargeSearchRequest;
 import com.paydock.javasdk.Models.Customer;
 import com.paydock.javasdk.Models.PaymentSource;
-import com.paydock.javasdk.Services.Charges;
-import com.paydock.javasdk.Services.Config;
-import com.paydock.javasdk.Services.Environment;
-
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -28,7 +24,7 @@ public class ChargesTest {
     String SecretKey = "c3de8f40ebbfff0fb74c11154274c080dfb8e3f9";
     String GatewayId = "58dba2dc5219634f922f79c3";
     String PaypalGatewayId = "58ede3577f8ce1233621d1bb";
-    String PublicKey = "b2dad5fcf18f6f504685a46af0df82216781f3";
+    String PublicKey = "8b2dad5fcf18f6f504685a46af0df82216781f3b";
 
     @Before
     public void init() throws Exception {

@@ -2,14 +2,12 @@ package com.paydock.javasdk.Services;
 
 import com.paydock.javasdk.Models.CustomerItemResponse;
 import com.paydock.javasdk.Models.CustomerItemsResponse;
+import com.paydock.javasdk.Models.CustomerPaymentSourceSearchRequest;
 import com.paydock.javasdk.Models.CustomerRequest;
 import com.paydock.javasdk.Models.CustomerResponse;
-import com.paydock.javasdk.Models.CustomerUpdateRequest;
 import com.paydock.javasdk.Models.CustomerSearchRequest;
+import com.paydock.javasdk.Models.CustomerUpdateRequest;
 import com.paydock.javasdk.Models.PaymentSource;
-import com.paydock.javasdk.Services.Config;
-import com.paydock.javasdk.Services.Customers;
-import com.paydock.javasdk.Services.Environment;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -25,7 +23,7 @@ public class CustomersTest {
     String SecretKey = "c3de8f40ebbfff0fb74c11154274c080dfb8e3f9";
     String GatewayId = "58b60d8a6da7e425d6e4f6c7";
     String PaypalGatewayId = "58ede3577f8ce1233621d1bb";
-    String PublicKey = "b2dad5fcf18f6f504685a46af0df82216781f3";
+    String PublicKey = "8b2dad5fcf18f6f504685a46af0df82216781f3b";
 
     @Before
     public void init() throws Exception {
@@ -81,6 +79,23 @@ public class CustomersTest {
         CustomerItemResponse result = new Customers().get(customer.resource.data._id);
         Assert.assertTrue(result.get_IsSuccess());
     }
+
+    @Test
+    public void get3() throws Exception {
+        CustomerResponse customer = CreateBasicCustomer("test@email.com");
+        CustomerItemResponse result = new Customers().get(customer.resource.data._id);
+        CustomerSearchRequest request = new CustomerSearchRequest();
+        request._id = result.resource.data._id;
+        CustomerItemsResponse result1 = new Customers().get(request);
+        CustomerPaymentSourceSearchRequest request1 = new CustomerPaymentSourceSearchRequest();
+        request1.query_token = result1.resource.query_token;
+        CustomerItemsResponse result2 = new Customers().get(request1);
+        Assert.assertTrue(result2.get_IsSuccess());
+    }
+
+
+
+
 
     @Test
     public void update() throws Exception {
