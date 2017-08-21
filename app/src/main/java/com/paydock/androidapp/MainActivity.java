@@ -51,9 +51,8 @@ public class MainActivity extends Activity implements IGetToken {
         mCreditCardInputForm = findViewById(R.id.creditCardInputForm);
         mDirectDebitInputForm = findViewById(R.id.directDebitInputForm);
 
-        mCreditCardInputForm.setVisibility(View.INVISIBLE);
         mCreditCardInputForm.setVisibility(View.GONE);
-        mDirectDebitInputForm.setVisibility(View.VISIBLE);
+        //mDirectDebitInputForm.setVisibility(View.GONE);
 
         bAddCharge.setOnClickListener(v -> new AddCharge(output -> {
             ChargeResponse ch = output;
