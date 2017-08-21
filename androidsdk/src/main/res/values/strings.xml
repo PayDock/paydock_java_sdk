@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">AndroidSDK</string>
+
+    <string name="btn_credit_card_name_hint">Card Name</string>
+    <string name="btn_credit_card_name_required">Card name is required</string>
+
+    <string name="btn_credit_card_number_hint">Card Number</string>
+    <string name="btn_credit_card_number_required">Card number is required</string>
+    <string name="btn_credit_card_number_invalid">Card number is invalid</string>
+
+    <string name="btn_credit_card_expiry">Expiry</string>
+    <string name="btn_credit_card_expiry_hint">MM/YY</string>
+    <string name="btn_credit_card_expiry_required">Expiry is required</string>
+    <string name="btn_credit_card_expiry_invalid">Expiry is invalid</string>
+
+    <string name="btn_credit_card_cvc_hint">CVC</string>
+    <string name="btn_credit_card_cvc_invalid">Security code invalid</string>
+
+    <string name="btn_credit_card_visa">Visa</string>
+    <string name="btn_credit_card_mastercard">MasterCard</string>
+    <string name="btn_credit_card_amex">AMEX</string>
+    <string name="btn_credit_card_diners">Diners Club</string>
+    <string name="btn_credit_card_cup">China Union Pay</string>
+    <string name="btn_credit_card_default">Default Card</string>
+
+    <string name="btn_direct_debit_name_hint">Account Name</string>
+    <string name="btn_direct_debit_name_required">Bank account name is required</string>
+
+    <string name="btn_direct_debit_bsb_number_hint">BSB</string>
+    <string name="btn_direct_debit_bsb_number_required">BSB number is required</string>
+    <string name="btn_direct_debit_bsb_number_invalid">BSB number is invalid</string>
+
+    <string name="btn_direct_debit_account_number_hint">Account Number</string>
+    <string name="btn_direct_debit_account_number_required">Account number is required</string>
+    <string name="btn_direct_debit_account_number_invalid">Account number is invalid</string>
+
+</resources>

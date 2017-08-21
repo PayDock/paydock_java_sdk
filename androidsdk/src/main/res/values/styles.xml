@@ -1,0 +1,51 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/color_dark_gray</item>
+    </style>
+
+    <style name="btn_container_icon">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/btn_container_layout_height</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:baselineAligned">false</item>
+    </style>
+
+    <style name="btn_container_no_icon">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/btn_container_layout_height</item>
+        <item name="android:paddingLeft">@dimen/btn_icon_layout_width</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:baselineAligned">false</item>
+    </style>
+
+    <style name="btn_error_layout" parent="TextAppearance.AppCompat">>
+        <item name="android:textColor">@color/color_red</item>
+        <item name="android:textSize">@dimen/btn_input_error_text_size</item>
+    </style>
+
+    <style name="btn_form_icon">
+        <item name="android:layout_width">@dimen/btn_icon_layout_width</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">top|center_horizontal</item>
+        <item name="android:paddingBottom">@dimen/btn_margin</item>
+        <item name="android:paddingRight">@dimen/btn_icon_right_margin</item>
+    </style>
+
+    <style name="btn_text_input_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="btn_edit_text_field">
+        <item name="android:textSize">@dimen/btn_input_text_size</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingTop">@dimen/btn_margin</item>
+        <item name="android:textColorHint">@color/color_light_gray</item>
+    </style>
+
+</resources>

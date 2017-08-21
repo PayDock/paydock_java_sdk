@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <LinearLayout style="@style/btn_container_icon">
+
+        <ImageView
+            android:id="@+id/ivBankIcon"
+            style="@style/btn_form_icon"
+            android:src="@drawable/ic_bank"
+            tools:ignore="ContentDescription" />
+
+        <android.support.design.widget.TextInputLayout
+            style="@style/btn_text_input_layout"
+            android:id="@+id/etDirectDebitNameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:labelFor="@+id/etDirectDebitName"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/btn_error_layout">
+
+            <EditText
+                style="@style/btn_edit_text_field"
+                android:id="@+id/etDirectDebitName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="false"
+                android:focusableInTouchMode="true"
+                android:hint="@string/btn_direct_debit_name_hint"
+                android:inputType="text"
+                android:maxLength="100"
+                android:nextFocusDown="@+id/etDirectDebitBSBNumber"
+                android:selectAllOnFocus="false"
+                android:textSize="16sp" />
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/btn_container_no_icon">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/etDirectDebitBSBNumberLayout"
+            style="@style/btn_text_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:labelFor="@+id/etDirectDebitBSBNumber"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/btn_error_layout">
+
+            <EditText
+                android:id="@+id/etDirectDebitBSBNumber"
+                style="@style/btn_edit_text_field"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/btn_direct_debit_bsb_number_hint"
+                android:inputType="number"
+                android:maxLength="6"
+                android:nextFocusDown="@+id/etDirectDebitAccountNumber"
+                android:selectAllOnFocus="false"
+                android:textColor="@color/color_dark_gray"
+                android:textColorHint="@android:color/darker_gray"
+                android:textColorLink="@android:color/darker_gray"
+                android:textSize="16sp" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout style="@style/btn_container_no_icon"
+                  android:baselineAligned="false">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/etDirectDebitAccountNumberLayout"
+            style="@style/btn_text_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:labelFor="@+id/etDirectDebitAccountNumber"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/btn_error_layout">
+
+            <EditText
+                android:id="@+id/etDirectDebitAccountNumber"
+                style="@style/btn_edit_text_field"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/btn_direct_debit_account_number_hint"
+                android:inputType="number"
+                android:maxLength="20"
+                android:nextFocusDown="@+id/etDirectDebitAccountNumber"
+                android:selectAllOnFocus="false"
+                android:textColor="@color/color_dark_gray"
+                android:textColorHint="@android:color/darker_gray"
+                android:textColorLink="@android:color/darker_gray"
+                android:textSize="16sp"/>
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

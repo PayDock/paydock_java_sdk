@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
     android:focusable="true"
-    android:background="@android:color/black"
     android:weightSum="1"
     android:orientation="vertical"
     android:padding="16dp">
@@ -39,16 +39,16 @@
             android:textSize="16sp" />
 
         <Button
-            android:id="@+id/bAddCustomer"
+            android:id="@+id/bGetToken"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
             android:layout_gravity="fill_horizontal|bottom"
             android:focusable="true"
-            android:text="Customer"
-            android:textSize="16sp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:text="GetToken"
+            android:textSize="16sp"/>
 
     </RelativeLayout>
 
@@ -58,8 +58,10 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
+        android:padding="0dp"
         android:text="Name"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/editText2"
@@ -67,8 +69,10 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
+        android:padding="0dp"
         android:text="Name"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/editText3"
@@ -76,8 +80,10 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
+        android:padding="0dp"
         android:text="Name"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/editText4"
@@ -85,8 +91,10 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
+        android:padding="0dp"
         android:text="Name"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/editText5"
@@ -94,8 +102,10 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
+        android:padding="0dp"
         android:text="Name"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/editText6"
@@ -103,8 +113,24 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
+        android:padding="0dp"
         android:text="Name"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp" />
+
+    <com.paydock.androidsdk.View.CreditCardInputForm
+        android:id="@+id/creditCardInputForm"
+        android:layout_width="@dimen/input_layout_width"
+        android:layout_height="@dimen/input_layout_height"
+        android:layout_marginLeft="@dimen/input_layout_horizontal_margin"
+        android:layout_marginRight="@dimen/input_layout_horizontal_margin"/>
+
+    <com.paydock.androidsdk.View.DirectDebitInputForm
+        android:id="@+id/directDebitInputForm"
+        android:layout_width="@dimen/input_layout_width"
+        android:layout_height="@dimen/input_layout_height"
+        android:layout_marginLeft="@dimen/input_layout_horizontal_margin"
+        android:layout_marginRight="@dimen/input_layout_horizontal_margin"/>
 
 
 </LinearLayout>

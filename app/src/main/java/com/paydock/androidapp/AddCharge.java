@@ -1,18 +1,15 @@
-package com.paydock.paydocksdk;
+package com.paydock.androidapp;
 
 import android.os.AsyncTask;
 
-import com.paydock.paydocksdk.Models.ChargeRequest;
-import com.paydock.paydocksdk.Models.ChargeResponse;
-import com.paydock.paydocksdk.Models.ResponseException;
-import com.paydock.paydocksdk.Services.Charges;
-import com.paydock.paydocksdk.Services.Config;
-import com.paydock.paydocksdk.Services.Environment;
+import com.paydock.javasdk.Models.ChargeRequest;
+import com.paydock.javasdk.Models.ChargeResponse;
+import com.paydock.javasdk.Models.ResponseException;
+import com.paydock.javasdk.Services.Charges;
+import com.paydock.javasdk.Services.Config;
+import com.paydock.javasdk.Services.Environment;
 
 
-/**
- * Created by Mark on 13/02/2016.
- */
 public class AddCharge extends AsyncTask<ChargeRequest, Void, ChargeResponse>{
 
 
