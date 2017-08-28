@@ -50,7 +50,7 @@ public class GetToken extends AsyncTask<TokenRequest, Void, TokenCardResponse>{
     @Override
     protected void onPostExecute(TokenCardResponse ch) {
         super.onPostExecute(ch);
-        mDelegate.processFinish(ch);
+        mDelegate.tokenCallback(ch);
     }
 
 }
