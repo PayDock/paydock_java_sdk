@@ -83,7 +83,7 @@ public class MainActivity extends Activity implements IGetToken {
                 mDirectDebitInputForm.clear();
             }
 
-        });
+        });//
 
 
         bGetToken.setOnClickListener(v -> {
