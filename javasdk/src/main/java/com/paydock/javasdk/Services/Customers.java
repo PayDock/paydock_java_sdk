@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 import com.paydock.javasdk.Models.CustomerItemResponse;
 import com.paydock.javasdk.Models.CustomerItemsResponse;
 import com.paydock.javasdk.Models.CustomerPaymentSourceSearchRequest;
+import com.paydock.javasdk.Models.CustomerPaymentSourceSearchResponse;
 import com.paydock.javasdk.Models.CustomerRequest;
 import com.paydock.javasdk.Models.CustomerResponse;
 import com.paydock.javasdk.Models.CustomerSearchRequest;
@@ -60,13 +61,13 @@ public class Customers  implements ICustomers
         return gson.fromJson(responseJson, CustomerItemsResponse.class);
     }
 
-    public CustomerItemsResponse get(CustomerPaymentSourceSearchRequest request) throws Exception {
+    public CustomerPaymentSourceSearchResponse get(CustomerPaymentSourceSearchRequest request) throws Exception {
         String url = "customers/payment_sources";
         URLEncoder.encode(url, "UTF-8");
         url = UrlExtensionMethods.appendParameter(url, "query_token", request.query_token);
         String responseJson = _serviceHelper.callPaydock(url, HttpMethod.GET, "", true);
         Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
-        return gson.fromJson(responseJson, CustomerItemsResponse.class);
+        return gson.fromJson(responseJson, CustomerPaymentSourceSearchResponse.class);
     }
 
     public CustomerItemResponse get(String customerId) throws Exception {

@@ -3,6 +3,7 @@ package com.paydock.javasdk.Services;
 import com.paydock.javasdk.Models.CustomerItemResponse;
 import com.paydock.javasdk.Models.CustomerItemsResponse;
 import com.paydock.javasdk.Models.CustomerPaymentSourceSearchRequest;
+import com.paydock.javasdk.Models.CustomerPaymentSourceSearchResponse;
 import com.paydock.javasdk.Models.CustomerRequest;
 import com.paydock.javasdk.Models.CustomerResponse;
 import com.paydock.javasdk.Models.CustomerSearchRequest;
@@ -89,7 +90,7 @@ public class CustomersTest {
         CustomerItemsResponse result1 = new Customers().get(request);
         CustomerPaymentSourceSearchRequest request1 = new CustomerPaymentSourceSearchRequest();
         request1.query_token = result1.resource.query_token;
-        CustomerItemsResponse result2 = new Customers().get(request1);
+        CustomerPaymentSourceSearchResponse result2 = new Customers().get(request1);
         Assert.assertTrue(result2.get_IsSuccess());
     }
 
