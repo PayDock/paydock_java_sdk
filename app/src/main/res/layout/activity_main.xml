@@ -118,26 +118,6 @@
         android:textColor="@color/colorAccent"
         android:textSize="14sp" />
 
-    <com.paydock.androidsdk.View.VaultedPaymentSourcesInputForm
-        android:id="@+id/vaultedPaymentsSourcesInputForm"
-        android:layout_width="@dimen/input_layout_width"
-        android:layout_height="@dimen/input_layout_height"
-        android:layout_marginLeft="@dimen/input_layout_horizontal_margin"
-        android:layout_marginRight="@dimen/input_layout_horizontal_margin"/>
-
-    <com.paydock.androidsdk.View.CreditCardInputForm
-        android:id="@+id/creditCardInputForm"
-        android:layout_width="@dimen/input_layout_width"
-        android:layout_height="@dimen/input_layout_height"
-        android:layout_marginLeft="@dimen/input_layout_horizontal_margin"
-        android:layout_marginRight="@dimen/input_layout_horizontal_margin"/>
-
-    <com.paydock.androidsdk.View.DirectDebitInputForm
-        android:id="@+id/directDebitInputForm"
-        android:layout_width="@dimen/input_layout_width"
-        android:layout_height="@dimen/input_layout_height"
-        android:layout_marginLeft="@dimen/input_layout_horizontal_margin"
-        android:layout_marginRight="@dimen/input_layout_horizontal_margin"/>
 
 
 
