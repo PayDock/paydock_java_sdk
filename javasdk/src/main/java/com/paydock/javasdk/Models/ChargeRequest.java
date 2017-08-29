@@ -11,6 +11,7 @@ public class ChargeRequest
     public String reference;
     public String description;
     public String customer_id;
+    public String payment_source_id;
     public Map<String, String> meta;
     public Customer customer;
 }
