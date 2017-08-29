@@ -1,0 +1,6 @@
+<resources>
+    <dimen name="btn_margin">8dp</dimen>
+    <dimen name="input_layout_height">200dp</dimen>
+    <dimen name="input_layout_width">300dp</dimen>
+    <dimen name="input_layout_horizontal_margin">10dp</dimen>
+</resources>
