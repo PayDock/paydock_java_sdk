@@ -16,8 +16,6 @@ import com.paydock.javasdk.Tools.IServiceHelper;
 import com.paydock.javasdk.Tools.ServiceHelper;
 import com.paydock.javasdk.Tools.UrlExtensionMethods;
 
-import static com.paydock.javasdk.Tools.UrlExtensionMethods.appendParameter;
-
 public class Notifications implements INotifications
 {
     protected IServiceHelper _serviceHelper;// = new IServiceHelper();

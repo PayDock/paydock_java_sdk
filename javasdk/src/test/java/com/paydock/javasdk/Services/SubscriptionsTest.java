@@ -43,7 +43,7 @@ public class SubscriptionsTest {
         subscription.description = "description";
             customer.first_name = "Justin";
             customer.last_name = "Timberlake";
-            customer.email = "test@email.com";
+            customer.email = customerEmail;
                 payment_source.gateway_id = gatewayId;
                 payment_source.card_name = "Test Name";
                 payment_source.card_number = "5520000000000000";

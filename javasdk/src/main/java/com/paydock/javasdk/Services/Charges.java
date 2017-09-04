@@ -17,7 +17,6 @@ import com.paydock.javasdk.Models.ChargeSearchRequest;
 import java.math.BigDecimal;
 import java.net.URLEncoder;
 
-import static com.paydock.javasdk.Tools.UrlExtensionMethods.appendParameter;
 
 /**
 * Provides abstraction over the /charges endpoint for the API

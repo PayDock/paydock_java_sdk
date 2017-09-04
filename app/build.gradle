@@ -31,8 +31,8 @@ android {
     productFlavors {
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
     }
 }
 
@@ -44,7 +44,5 @@ dependencies {
     androidTestCompile 'com.android.support:support-annotations:26.0.0-alpha1'
     androidTestCompile 'com.android.support.test:rules:0.5'
     androidTestCompile 'com.android.support.test:runner:0.5'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.paydock:javasdk:1.0.3'
-
 }

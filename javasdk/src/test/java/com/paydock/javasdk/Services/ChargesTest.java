@@ -34,11 +34,12 @@ public class ChargesTest {
     private ChargeResponse CreateBasicCharge(BigDecimal chargeAmount, String gatewayId, String customerEmail) throws Exception {
         ChargeRequest charge = new ChargeRequest();
         charge.currency = "AUD";
+        charge.description = "Test charge description";
         charge.amount = chargeAmount;
             Customer customer = new Customer();
             customer.first_name = "Justin";
             customer.last_name = "Timberlake";
-            customer.email = "test@email.com";
+            customer.email = customerEmail;
                 PaymentSource payment_source = new PaymentSource();
                 payment_source.gateway_id = gatewayId;
                 payment_source.card_name = "Test Name";
