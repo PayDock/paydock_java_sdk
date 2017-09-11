@@ -1,11 +1,13 @@
 package com.paydock.javasdk.Services;
 
+import com.paydock.javasdk.Models.GatewayData;
 import com.paydock.javasdk.Models.GatewayItemResponse;
 import com.paydock.javasdk.Models.GatewayItemsResponse;
 import com.paydock.javasdk.Models.GatewayRequest;
 import com.paydock.javasdk.Models.GatewayResponse;
 import com.paydock.javasdk.Models.GatewayUpdateRequest;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -71,6 +73,17 @@ public class GatewaysTest {
         GatewayResponse Gateway = addGateway();
         GatewayItemResponse delete = new Gateways().delete(Gateway.resource.data._id);
         Assert.assertTrue(delete.get_IsSuccess());
+    }
+
+    @After
+    public void cleanup() throws Exception {
+        GatewayItemsResponse Gateway = new Gateways().get();
+        GatewayData[] GatewayData = Gateway.resource.data;
+        for (int i = 0; i < Gateway.resource.count; i++) {
+            if (GatewayData[i].name.contains("BraintreeTesting"))
+                new Gateways().delete(GatewayData[i]._id);
+        }
+        Assert.assertTrue(true);
     }
 
 }
