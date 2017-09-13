@@ -3,6 +3,7 @@ package com.paydock.androidapp;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -41,21 +42,30 @@ public class MainActivity extends Activity {
         editText5 = findViewById(R.id.editText5);
         editText6 = findViewById(R.id.editText6);
 
-        bAddCharge.setOnClickListener(v -> new AddCharge(output -> {
-            ChargeResponse ch = output;
-            if (ch.resource != null) {
-                editText.setText(ch.resource.data.customer.first_name);
-                editText2.setText(ch.resource.data.customer.last_name);
-                editText3.setText(ch.resource.data.customer.email);
-                editText4.setText(ch.resource.data.reference);
-                editText5.setText(ch.resource.data.amount.toString());
-                editText6.setText(ch.resource.data.status);
-            } else if (ch.error != null) {
-                editText.setText(ch.error.http_status_code.toString());
-                editText2.setText(ch.error.message);
-                editText3.setText(ch.error.jsonResponse);
+
+        bAddCharge.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                new AddCharge(new AddCharge.AsyncResponse(){
+
+                    @Override
+                    public void processFinish(ChargeResponse output) {
+                        ChargeResponse ch = output;
+                        if (ch.resource != null) {
+                            editText.setText(ch.resource.data.customer.first_name);
+                            editText2.setText(ch.resource.data.customer.last_name);
+                            editText3.setText(ch.resource.data.customer.email);
+                            editText4.setText(ch.resource.data.reference);
+                            editText5.setText(ch.resource.data.amount.toString());
+                            editText6.setText(ch.resource.data.status);
+                        } else if (ch.error != null) {
+                            editText.setText(ch.error.http_status_code.toString());
+                            editText2.setText(ch.error.message);
+                            editText3.setText(ch.error.jsonResponse);
+                        }
+                    }
+                }).execute(createCharge());
             }
-        }).execute(createCharge()));
+        });
 
     }
 
