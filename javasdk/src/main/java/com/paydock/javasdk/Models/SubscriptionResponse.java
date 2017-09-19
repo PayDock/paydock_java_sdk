@@ -60,6 +60,7 @@ public class SubscriptionResponse  extends Response
         public Date end_date;
         public Date next_assessment;
         public Date first_assessment;
+        public Date next_assessment_planned;
         public String status;
         public boolean locked;
         public int completed_count;
