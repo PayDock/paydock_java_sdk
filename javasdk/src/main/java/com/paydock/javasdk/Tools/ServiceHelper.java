@@ -80,6 +80,8 @@ public class ServiceHelper  implements IServiceHelper
             if(!(httpCode == 200 || httpCode == 201))
                 ConvertException(result, httpCode);
 
+        } catch (Exception e){
+            ConvertTimeoutException("Request Timeout", 408);
         }
         finally
         {
@@ -101,6 +103,19 @@ public class ServiceHelper  implements IServiceHelper
 
         throw new ResponseException(errorResponse, httpCodeString);
     }
+
+    private void ConvertTimeoutException(String result, Integer httpCode) throws Exception {
+        String httpCodeString = httpCode.toString();
+
+        ErrorResponse errorResponse = new ErrorResponse();
+        errorResponse.http_status_code = httpCode;
+        errorResponse.jsonResponse = "";
+        errorResponse.message = result;
+
+        throw new ResponseException(errorResponse, httpCodeString);
+    }
+
+
 
 }
 
