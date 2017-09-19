@@ -1,0 +1,64 @@
+{
+  "event": "refund_failure",
+  "data": {
+    "_id": "589daa621958cb42532f2476",
+    "created_at": "2017-02-10T11:56:18.021Z",
+    "updated_at": "2017-02-10T12:24:56.723Z",
+    "company_id": "5584018a27b2cf0b1e4f1a6c",
+    "user_id": "5584018a27b2cf0b1e4f1a6b",
+    "amount": 111,
+    "currency": "AUD",
+    "subscription_id": "589daa4fa6c87450a798347f",
+    "__v": 3,
+    "external_id": "ch_A5odfEhbA7VaT1",
+    "transactions": [
+      {
+        "created_at": "2017-02-10T11:56:18.017Z",
+        "amount": 111,
+        "currency": "AUD",
+        "_id": "589daa621958cb42532f2477",
+        "status": "complete",
+        "type": "sale"
+      },
+      {
+        "created_at": "2017-02-10T12:24:55.732Z",
+        "amount": 11111111111,
+        "currency": "AUD",
+        "_id": "589db1171958cb42532f2497",
+        "status": "failed",
+        "type": "refund"
+      }
+    ],
+    "one_off": false,
+    "archived": false,
+    "customer": {
+      "customer_id": "589daa4ea6c87450a798347c",
+      "first_name": "Test",
+      "last_name": "Test",
+      "email": "test@test.com",
+      "phone": "+61000000000",
+      "payment_source": {
+        "type": "card",
+        "card_name": "Test Test",
+        "card_number_last4": "4444",
+        "card_scheme": "mastercard",
+        "expire_month": 1,
+        "expire_year": 2019,
+        "address_line1": "Test address",
+        "address_line2": "Test address",
+        "address_city": "Sydney",
+        "address_country": "AU",
+        "gateway_id": "56a8ab12d6bd4e7d628576aa"
+      }
+    },
+    "status": "complete",
+    "transaction": {
+      "created_at": "2017-02-10T12:24:55.732Z",
+      "amount": 11111111111,
+      "currency": "AUD",
+      "_id": "589db1171958cb42532f2497",
+      "status": "failed",
+      "type": "refund"
+    }
+  }
+}

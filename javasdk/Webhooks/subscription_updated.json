@@ -1,0 +1,48 @@
+{
+  "event": "subscription_updated",
+  "data": {
+    "_id": "589dae7aa6c87450a798348e",
+    "created_at": "2017-02-10T12:13:46.059Z",
+    "updated_at": "2017-02-10T12:14:39.872Z",
+    "user_id": "5584018a27b2cf0b1e4f1a6b",
+    "company_id": "5584018a27b2cf0b1e4f1a6c",
+    "amount": 111,
+    "payment_source_id": "589dae79a6c87450a798348c",
+    "_source_ip_address": "159.224.44.130",
+    "status": "active",
+    "archived": false,
+    "customer": {
+      "customer_id": "589dae78a6c87450a798348b",
+      "first_name": "Test",
+      "last_name": "Test",
+      "email": "test@test.com",
+      "phone": "+61000000000"
+    },
+    "statistics": {
+      "total_collected_amount": 111,
+      "successful_transactions": 1
+    },
+    "schedule": {
+      "end_amount_total": null,
+      "end_amount_before": null,
+      "end_transactions": null,
+      "end_amount_after": null,
+      "end_date": null,
+      "interval": "day",
+      "start_date": "2017-02-12T00:00:00.000Z",
+      "next_assessment": "2017-02-12T00:00:00.000Z",
+      "next_assessment_planned": "2017-02-12T00:00:00.000Z",
+      "first_assessment": "2017-02-12T00:00:00.000Z",
+      "status": "complete",
+      "last_assessment": "2017-02-10T12:13:49.469Z",
+      "locked": false,
+      "completed_count": 1,
+      "retry_count": 0,
+      "frequency": 1
+    },
+    "currency": "AUD",
+    "gateway_type": "Stripe",
+    "gateway_name": "stripe",
+    "gateway_mode": "test"
+  }
+}

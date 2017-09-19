@@ -1,0 +1,44 @@
+{
+  "event": "subscription_finished",
+  "data": {
+    "_id": "589dacaf1958cb42532f2482",
+    "created_at": "2017-02-10T12:06:07.575Z",
+    "updated_at": "2017-02-10T12:06:19.146Z",
+    "amount": 111,
+    "payment_source_id": "589dacaf1958cb42532f2480",
+    "status": "expired",
+    "__v": 0,
+    "archived": false,
+    "_service": {
+      "customer_default_gateway_id": "56a8ab12d6bd4e7d628576aa",
+      "tags": "Test Test test@test.com",
+      "queue_id": "QU-DD034F558CB0C576"
+    },
+    "customer": {
+      "customer_id": "589dacae1958cb42532f247f",
+      "first_name": "Test",
+      "last_name": "Test",
+      "email": "test@test.com",
+      "phone": "+61000000000"
+    },
+    "statistics": {
+      "total_collected_amount": 111,
+      "successful_transactions": 1
+    },
+    "schedule": {
+      "last_assessment": "2017-02-10T12:06:19.143Z",
+      "interval": "week",
+      "start_date": "2017-02-10T12:06:06.596Z",
+      "end_date": "2017-02-11T00:00:00.000Z",
+      "next_assessment": "2017-02-10T12:06:06.596Z",
+      "next_assessment_planned": "2017-02-10T12:06:06.596Z",
+      "first_assessment": "2017-02-10T12:06:06.596Z",
+      "status": "complete",
+      "locked": false,
+      "completed_count": 1,
+      "retry_count": 0,
+      "frequency": 1
+    },
+    "currency": "AUD"
+  }
+}

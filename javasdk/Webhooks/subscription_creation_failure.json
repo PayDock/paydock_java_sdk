@@ -1,0 +1,28 @@
+{
+  "event": "subscription_creation_failure",
+  "data": {
+    "customer": {
+      "first_name": "Test",
+      "last_name": "Test",
+      "email": "test@test.com",
+      "phone": "+61000000000",
+      "payment_source": {
+        "address_country": "AU",
+        "type": "card",
+        "address_line1": "Test address",
+        "address_line2": "Test address",
+        "address_city": "Sydney",
+        "address_postcode": "111",
+        "gateway_id": "56a8ab12d6bd4e7d628576aa",
+        "card_name": "Test Test",
+        "card_number_last4": "4445",
+        "expire_month": "**",
+        "expire_year": "****",
+        "card_ccv": "***"
+      },
+      "_check_expire_date": false
+    },
+    "amount": "111",
+    "currency": "AUD"
+  }
+}
