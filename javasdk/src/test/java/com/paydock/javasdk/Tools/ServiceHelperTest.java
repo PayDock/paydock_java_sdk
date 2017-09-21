@@ -30,13 +30,13 @@ public class ServiceHelperTest {
     @Test
     public void testTimeoutPasses() throws Exception {
         String message = callPaydock("charges", HttpMethod.GET,"",false, 30000);
-        Assert.assertTrue((message != null) || (message != "Request Timeout"));
+        Assert.assertTrue(!message.equals("Request Timeout"));
     }
 
     @Test
     public void testTimeoutFails() throws Exception {
         String message = callPaydock("charges", HttpMethod.GET,"",false, 1);
-        Assert.assertTrue(message == "Request Timeout");
+        Assert.assertTrue(message.equals("Request Timeout"));
     }
 
 
