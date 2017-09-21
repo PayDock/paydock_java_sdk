@@ -100,23 +100,33 @@ Review the functional tests for more examples at https://github.com/PayDockDev/p
 Webhooks are POSTed to the URL, once you've captured the payload, you can parse this:
 ```java
     // transaction webhook
-    var tran = (new Webhook()).Parse<TransactionWebhook>(tranJson);
-    
-    // subscription webhook
-    var subscription = (new Webhook()).Parse<SubscriptionWebhook>(subscriptionJson);
+    WebhookTransaction webhookTransaction = new Webhooks().ParseTransaction(postData);
 ```
-The different webhook types map to different data objects:/Users/markcardamis/Documents/AndroidStudioProjects/PayDockJavaSDK/javasdk/src/test/java/com/paydock/javasdk/WebhookSampleData/subscription_finished.json
-                                                                                              /Users/markcardamis/Documents/AndroidStudioProjects/PayDockJavaSDK/src/test/java/com/paydock/javasdk/WebhookSampleData/subscription_finished.json
+The different webhook types map to different data objects:
 
-- Transaction Success -> Webhook.Parse()
-- Transaction by Subscription Success -> Webhook.Parse()
-- Transaction by Subscription Failed -> Webhook.Parse()
-- Subscription Creation Success -> Webhook.Parse()
-- Subscription Finished -> Webhook.Parse()
-- Subscription Updated -> Webhook.Parse()
-- Subscription Failed -> Webhook.Parse()
-- Refund Requested -> Webhook.Parse()
-- Refund Success -> Webhook.Parse()
-- Refund Failure -> Webhook.Parse()
-- Card Expiration Warning -> Webhook.Parse()
-
+- Transaction Success
+  `WebhookTransaction webhookTransaction = new Webhooks().ParseTransaction(postData);`
+- Transaction Failure
+  `WebhookTransaction webhookTransaction = new Webhooks().ParseTransaction(postData);`
+- Transaction by Subscription Success
+  `WebhookSubscriptionTransaction webhooksubscriptionTransaction = new Webhooks().ParseSubscriptionTransaction(postData);`
+- Transaction by Subscription Failed
+  `WebhookSubscriptionTransaction webhooksubscriptionTransaction = new Webhooks().ParseSubscriptionTransaction(postData);`
+- Subscription Creation Success
+  `WebhookSubscriptionEvents webhooksubscriptionEvents = new Webhooks().ParseSubscriptionEvent(postData);`
+- Subscription Creation Failure
+  `WebhookSubscriptionEvents webhooksubscriptionEvents = new Webhooks().ParseSubscriptionEvent(postData);`
+- Subscription Finished
+  `WebhookSubscriptionEvents webhooksubscriptionEvents = new Webhooks().ParseSubscriptionEvent(postData);`
+- Subscription Updated
+  `WebhookSubscriptionEvents webhooksubscriptionEvents = new Webhooks().ParseSubscriptionEvent(postData);`
+- Subscription Failed
+  `WebhookSubscriptionEvents webhooksubscriptionEvents = new Webhooks().ParseSubscriptionEvent(postData);`
+- Refund Requested
+  `WebhookTransaction webhookTransaction = new Webhooks().ParseTransaction(postData);`
+- Refund Success
+  `WebhookTransaction webhookTransaction = new Webhooks().ParseTransaction(postData);`
+- Refund Failure
+  `WebhookTransaction webhookTransaction = new Webhooks().ParseTransaction(postData);`
+- Card Expiration Warning
+  `WebhookTransaction webhookTransaction = new Webhooks().ParseTransaction(postData);`
