@@ -118,7 +118,9 @@ public class WebhooksTest {
 
     private String loadFile(String path) throws Exception {
         String root = System.getProperty("user.dir");
-        File file = new File(root + "/src/test/java/com/paydock/javasdk/WebhookSamples/" + path);
+        if (!root.contains("javasdk"))
+            root = root + "/javasdk";
+        File file = new File(root + "/src/test/java/com/paydock/javasdk/WebhookSampleData/" + path);
         FileReader fileReader = new FileReader(file);
         BufferedReader Buffreader = new BufferedReader(fileReader);
         StringBuilder response = new StringBuilder();
