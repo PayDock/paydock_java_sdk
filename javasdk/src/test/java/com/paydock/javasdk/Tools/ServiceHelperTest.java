@@ -11,6 +11,7 @@ import org.junit.runners.JUnit4;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -30,13 +31,13 @@ public class ServiceHelperTest {
     @Test
     public void testTimeoutPasses() throws Exception {
         String message = callPaydock("charges", HttpMethod.GET,"",false, 30000);
-        Assert.assertTrue(!message.equals("Request Timeout"));
+        Assert.assertTrue(!message.equals("connect timed out"));
     }
 
     @Test
     public void testTimeoutFails() throws Exception {
         String message = callPaydock("charges", HttpMethod.GET,"",false, 1);
-        Assert.assertTrue(message.equals("Request Timeout"));
+        Assert.assertTrue(message.equals("connect timed out"));
     }
 
 
@@ -86,8 +87,8 @@ public class ServiceHelperTest {
             rd.close();
             result = response.toString();
 
-        } catch (Exception e){
-            return ("Request Timeout");
+        } catch (SocketTimeoutException e){
+            return (e.getMessage());
         }
         finally
         {

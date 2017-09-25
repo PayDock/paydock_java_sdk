@@ -8,6 +8,7 @@ import com.paydock.javasdk.Services.Config;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -80,7 +81,7 @@ public class ServiceHelper  implements IServiceHelper
             if(!(httpCode == 200 || httpCode == 201))
                 ConvertException(result, httpCode);
 
-        } catch (Exception e){
+        } catch (SocketTimeoutException e){
             ConvertTimeoutException("Request Timeout", 408);
         }
         finally
