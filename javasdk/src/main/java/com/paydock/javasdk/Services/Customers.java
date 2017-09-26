@@ -70,13 +70,11 @@ public class Customers  implements ICustomers
         return gson.fromJson(responseJson, CustomerPaymentSourceSearchResponse.class);
     }
 
-    public CustomerPaymentSourceSearchResponse getPaymentSources(String customerID) throws Exception {
+    public String getQueryToken(String customerID) throws Exception {
         CustomerSearchRequest request = new CustomerSearchRequest();
         request._id = customerID;
-        CustomerItemsResponse result1 = new Customers().get(request);
-        CustomerPaymentSourceSearchRequest request1 = new CustomerPaymentSourceSearchRequest();
-        request1.query_token = result1.resource.query_token;
-        return new Customers().get(request1);
+        CustomerItemsResponse result = new Customers().get(request);
+        return result.resource.query_token;
     }
 
 

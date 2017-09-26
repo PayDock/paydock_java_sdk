@@ -93,9 +93,8 @@ public class CustomersTest {
     @Test
     public void get4() throws Exception {
         CustomerResponse customer = CreateBasicCustomer("test@email.com");
-        CustomerItemResponse result = new Customers().get(customer.resource.data._id);
-        CustomerPaymentSourceSearchResponse result1 = new Customers().getPaymentSources(result.resource.data._id);
-        Assert.assertTrue(result1.get_IsSuccess());
+        String result = new Customers().getQueryToken(customer.resource.data._id);
+        Assert.assertFalse(result.isEmpty());
     }
 
     @Test
