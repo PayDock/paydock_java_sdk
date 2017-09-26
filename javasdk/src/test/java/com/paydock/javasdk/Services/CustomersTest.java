@@ -37,7 +37,7 @@ public class CustomersTest {
             PaymentSource payment_source = new PaymentSource();
             payment_source.gateway_id = PayDock.GatewayId;
             payment_source.card_name = "Test Name";
-            payment_source.card_number = "4111111111111111";
+            payment_source.card_number = "5520000000000000";
             payment_source.expire_month = "10";
             payment_source.expire_year = "2020";
             payment_source.card_ccv = "123";
@@ -108,9 +108,9 @@ public class CustomersTest {
         PaymentSource payment_source = new PaymentSource();
             payment_source.gateway_id = PayDock.GatewayId;
             payment_source.card_name = "Test Name";
-            payment_source.card_number = "4111111111111111";
-            payment_source.expire_month = "12";
-            payment_source.expire_year = "2022";
+            payment_source.card_number = "5520000000000000";
+            payment_source.expire_month = "10";
+            payment_source.expire_year = "2020";
             payment_source.card_ccv = "123";
         request.payment_source = payment_source;
 

@@ -21,10 +21,11 @@ public class TokensTest {
     private TokenResponse createToken() throws Exception {
         TokenRequest tokenRequest = new TokenRequest() ;
             tokenRequest.gateway_id = PayDock.GatewayId;
+            tokenRequest.email = "testpin21_1@test.com";
             tokenRequest.card_name = "Test Name";
-            tokenRequest.card_number = "4111111111111111";
-            tokenRequest.expire_month = "10";
-            tokenRequest.expire_year = "2020";
+            tokenRequest.card_number = "5520000000000000";
+            tokenRequest.expire_month = "05";
+            tokenRequest.expire_year = "2018";
             tokenRequest.card_ccv = "123";
         return new Tokens().create(tokenRequest);
     }
