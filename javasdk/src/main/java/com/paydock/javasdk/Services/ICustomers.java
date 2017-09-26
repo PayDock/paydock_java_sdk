@@ -19,6 +19,7 @@ public interface ICustomers
     CustomerItemResponse get(String customerId) throws Exception ;
     CustomerItemsResponse get(CustomerSearchRequest request) throws Exception ;
     CustomerPaymentSourceSearchResponse get(CustomerPaymentSourceSearchRequest request) throws Exception;
+    CustomerPaymentSourceSearchResponse getPaymentSources(String customerID) throws Exception;
     CustomerItemResponse update(CustomerUpdateRequest request) throws Exception ;
 }
 

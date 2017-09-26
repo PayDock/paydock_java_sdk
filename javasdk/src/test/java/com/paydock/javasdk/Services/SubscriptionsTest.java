@@ -9,6 +9,7 @@ import com.paydock.javasdk.Models.SubscriptionResponse;
 import com.paydock.javasdk.Models.SubscriptionSchedule;
 import com.paydock.javasdk.Models.SubscriptionSearchRequest;
 import com.paydock.javasdk.Models.SubscriptionUpdateRequest;
+import com.paydock.javasdk.PayDock;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -23,14 +24,9 @@ import java.util.Date;
 @RunWith(JUnit4.class)
 public class SubscriptionsTest {
 
-    String SecretKey = "c3de8f40ebbfff0fb74c11154274c080dfb8e3f9";
-    String GatewayId = "58dba2dc5219634f922f79c3";
-    String PaypalGatewayId = "58ede3577f8ce1233621d1bb";
-    String PublicKey = "8b2dad5fcf18f6f504685a46af0df82216781f3b";
-
     @Before
     public void init() throws Exception {
-        Config.initialise(Environment.Sandbox, SecretKey, PublicKey);
+        Config.initialise(Environment.Sandbox, PayDock.SecretKey, PayDock.PublicKey);
     }
 
     private SubscriptionResponse CreateBasicSubscription(BigDecimal SubscriptionAmount, String gatewayId, String customerEmail) throws Exception {
@@ -68,13 +64,15 @@ public class SubscriptionsTest {
 
     @Test
     public void add() throws Exception {
-        SubscriptionResponse subscription = CreateBasicSubscription(new BigDecimal("7"), GatewayId, "test@email.com");
+        SubscriptionResponse subscription = CreateBasicSubscription(new BigDecimal("7"),
+                PayDock.GatewayId, "test@email.com");
         Assert.assertTrue(subscription.get_IsSuccess());
     }
 
     @Test
     public void update() throws Exception {
-        SubscriptionResponse subscription = CreateBasicSubscription(new BigDecimal("8"), GatewayId, "test@email.com");
+        SubscriptionResponse subscription = CreateBasicSubscription(new BigDecimal("8"),
+                PayDock.GatewayId, "test@email.com");
         SubscriptionUpdateRequest request = new SubscriptionUpdateRequest();
         request._id = subscription.resource.data._id;
         request.description = "descriptionAfter";
@@ -90,20 +88,22 @@ public class SubscriptionsTest {
 
     @Test
     public void get1() throws Exception {
-        SubscriptionItemsResponse result = SearchSubscription(GatewayId);
+        SubscriptionItemsResponse result = SearchSubscription(PayDock.GatewayId);
             Assert.assertTrue(result.get_IsSuccess());
     }
 
     @Test
     public void get2() throws Exception {
-        SubscriptionResponse Subscription = CreateBasicSubscription(new BigDecimal("9"), GatewayId, "test@email.com");
+        SubscriptionResponse Subscription = CreateBasicSubscription(new BigDecimal("9"),
+                PayDock.GatewayId, "test@email.com");
         SubscriptionItemResponse result = new Subscriptions().get(Subscription.resource.data._id);
         Assert.assertTrue(result.get_IsSuccess());
     }
 
     @Test
     public void delete() throws Exception {
-        SubscriptionResponse Subscription = CreateBasicSubscription(new BigDecimal("12"), GatewayId, "test@email.com");
+        SubscriptionResponse Subscription = CreateBasicSubscription(new BigDecimal("12"),
+                PayDock.GatewayId, "test@email.com");
         SubscriptionItemResponse delete = new Subscriptions().delete(Subscription.resource.data._id);
         Assert.assertTrue(delete.get_IsSuccess());
     }

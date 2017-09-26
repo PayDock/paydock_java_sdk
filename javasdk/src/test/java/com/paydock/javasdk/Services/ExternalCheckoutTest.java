@@ -2,6 +2,7 @@ package com.paydock.javasdk.Services;
 
 import com.paydock.javasdk.Models.ExternalCheckoutRequest;
 import com.paydock.javasdk.Models.ExternalCheckoutResponse;
+import com.paydock.javasdk.PayDock;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,18 +15,15 @@ public class ExternalCheckoutTest {
 
     @Before
     public void init() throws Exception {
-        String secretKey = "c3de8f40ebbfff0fb74c11154274c080dfb8e3f9";
-        String publicKey = "8b2dad5fcf18f6f504685a46af0df82216781f3b";
-        Config.initialise(Environment.Sandbox, secretKey, publicKey);
+        Config.initialise(Environment.Sandbox, PayDock.SecretKey, PayDock.PublicKey);
     }
 
 
     @Test
     public void createLink() throws Exception {
-        String paypalGatewayId = "58ede3577f8ce1233621d1bb";
 
         ExternalCheckoutRequest request = new ExternalCheckoutRequest();
-        request.gateway_id = paypalGatewayId;
+        request.gateway_id = PayDock.PaypalGatewayId;
             request.mode = "test";
             request.success_redirect_url = "http://success.com";
             request.error_redirect_url = "http://error.com";

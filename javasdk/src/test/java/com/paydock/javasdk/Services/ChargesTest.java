@@ -8,6 +8,7 @@ import com.paydock.javasdk.Models.ChargeResponse;
 import com.paydock.javasdk.Models.ChargeSearchRequest;
 import com.paydock.javasdk.Models.Customer;
 import com.paydock.javasdk.Models.PaymentSource;
+import com.paydock.javasdk.PayDock;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -21,14 +22,9 @@ import java.math.BigDecimal;
 @RunWith(JUnit4.class)
 public class ChargesTest {
 
-    String SecretKey = "c3de8f40ebbfff0fb74c11154274c080dfb8e3f9";
-    String GatewayId = "58dba2dc5219634f922f79c3";
-    String PaypalGatewayId = "58ede3577f8ce1233621d1bb";
-    String PublicKey = "8b2dad5fcf18f6f504685a46af0df82216781f3b";
-
     @Before
     public void init() throws Exception {
-        Config.initialise(Environment.Sandbox, SecretKey, PublicKey);
+        Config.initialise(Environment.Sandbox, PayDock.SecretKey, PayDock.PublicKey);
     }
 
     private ChargeResponse CreateBasicCharge(BigDecimal chargeAmount, String gatewayId, String customerEmail) throws Exception {
@@ -60,7 +56,7 @@ public class ChargesTest {
 
     @Test
     public void add() throws Exception {
-        ChargeResponse charge = CreateBasicCharge(new BigDecimal("8"), GatewayId, "test@email.com");
+        ChargeResponse charge = CreateBasicCharge(new BigDecimal("8"), PayDock.GatewayId, "test@email.com");
         Assert.assertTrue(charge.get_IsSuccess());
     }
 
@@ -72,20 +68,20 @@ public class ChargesTest {
 
     @Test
     public void get1() throws Exception {
-        ChargeItemsResponse result = CreateSearchCharge(GatewayId);
+        ChargeItemsResponse result = CreateSearchCharge(PayDock.GatewayId);
         Assert.assertTrue(result.get_IsSuccess());
     }
 
     @Test
     public void get2() throws Exception {
-        ChargeResponse charge = CreateBasicCharge(new BigDecimal("9"), GatewayId, "test@email.com");
+        ChargeResponse charge = CreateBasicCharge(new BigDecimal("9"), PayDock.GatewayId, "test@email.com");
         ChargeItemResponse result = new Charges().get(charge.resource.data._id);
         Assert.assertTrue(result.get_IsSuccess());
     }
 
     @Test
     public void refund() throws Exception {
-        ChargeResponse charge = CreateBasicCharge(new BigDecimal("11"), GatewayId, "test@email.com");
+        ChargeResponse charge = CreateBasicCharge(new BigDecimal("11"), PayDock.GatewayId, "test@email.com");
         ChargeRefundResponse refund = new Charges().refund(charge.resource.data._id, new BigDecimal("11"));
         Assert.assertTrue(refund.get_IsSuccess());
 
@@ -93,7 +89,7 @@ public class ChargesTest {
 
     @Test
     public void archive() throws Exception {
-        ChargeResponse charge = CreateBasicCharge(new BigDecimal("12"), GatewayId, "test@email.com");
+        ChargeResponse charge = CreateBasicCharge(new BigDecimal("12"), PayDock.GatewayId, "test@email.com");
         ChargeRefundResponse refund = new Charges().archive(charge.resource.data._id);
         Assert.assertTrue(refund.get_IsSuccess());
     }

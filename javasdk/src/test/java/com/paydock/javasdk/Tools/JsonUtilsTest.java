@@ -19,7 +19,7 @@ import java.util.Set;
 @RunWith(JUnit4.class)
 public class JsonUtilsTest {
 
-    String[] stringCase = new String[10];
+    private String[] stringCase = new String[10];
 
     @Before
     public void init() throws Exception {

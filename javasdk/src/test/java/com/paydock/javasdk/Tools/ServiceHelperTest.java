@@ -20,12 +20,9 @@ import javax.net.ssl.SSLContext;
 @RunWith(JUnit4.class)
 public class ServiceHelperTest {
 
-    String SecretKey = "";
-    String PublicKey = "";
-
     @Before
     public void init() throws Exception {
-        Config.initialise(Environment.Sandbox, SecretKey, PublicKey);
+        Config.initialise(Environment.Sandbox, "", "");
     }
 
     @Test

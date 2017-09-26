@@ -6,6 +6,7 @@ import com.paydock.javasdk.Models.GatewayItemsResponse;
 import com.paydock.javasdk.Models.GatewayRequest;
 import com.paydock.javasdk.Models.GatewayResponse;
 import com.paydock.javasdk.Models.GatewayUpdateRequest;
+import com.paydock.javasdk.PayDock;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -17,14 +18,9 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class GatewaysTest {
 
-    String SecretKey = "c3de8f40ebbfff0fb74c11154274c080dfb8e3f9";
-    String GatewayId = "58b60d8a6da7e425d6e4f6c7";
-    String PaypalGatewayId = "58ede3577f8ce1233621d1bb";
-    String PublicKey = "8b2dad5fcf18f6f504685a46af0df82216781f3b";
-
     @Before
     public void init() throws Exception {
-        Config.initialise(Environment.Sandbox, SecretKey, PublicKey);
+        Config.initialise(Environment.Sandbox, PayDock.SecretKey, PayDock.PublicKey);
     }
 
     private GatewayResponse addGateway() throws Exception {
@@ -52,7 +48,7 @@ public class GatewaysTest {
 
     @Test
     public void get1() throws Exception {
-        GatewayItemResponse result = new Gateways().get(GatewayId);
+        GatewayItemResponse result = new Gateways().get(PayDock.GatewayId);
         Assert.assertTrue(result.get_IsSuccess());
     }
 

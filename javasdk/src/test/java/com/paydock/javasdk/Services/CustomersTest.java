@@ -9,6 +9,7 @@ import com.paydock.javasdk.Models.CustomerResponse;
 import com.paydock.javasdk.Models.CustomerSearchRequest;
 import com.paydock.javasdk.Models.CustomerUpdateRequest;
 import com.paydock.javasdk.Models.PaymentSource;
+import com.paydock.javasdk.PayDock;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -21,14 +22,9 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class CustomersTest {
 
-    String SecretKey = "c3de8f40ebbfff0fb74c11154274c080dfb8e3f9";
-    String GatewayId = "58b60d8a6da7e425d6e4f6c7";
-    String PaypalGatewayId = "58ede3577f8ce1233621d1bb";
-    String PublicKey = "8b2dad5fcf18f6f504685a46af0df82216781f3b";
-
     @Before
     public void init() throws Exception {
-        Config.initialise(Environment.Sandbox, SecretKey, PublicKey);
+        Config.initialise(Environment.Sandbox, PayDock.SecretKey, PayDock.PublicKey);
     }
 
     private CustomerResponse CreateBasicCustomer(String customerEmail) throws Exception {
@@ -39,7 +35,7 @@ public class CustomersTest {
         customer.reference = "CustomerReference";
         customer.phone = "+61412123123";
             PaymentSource payment_source = new PaymentSource();
-            payment_source.gateway_id = GatewayId;
+            payment_source.gateway_id = PayDock.GatewayId;
             payment_source.card_name = "Test Name";
             payment_source.card_number = "4111111111111111";
             payment_source.expire_month = "10";
@@ -70,7 +66,7 @@ public class CustomersTest {
 
     @Test
     public void get1() throws Exception {
-        CustomerItemsResponse result = CreateSearchCustomer(GatewayId);
+        CustomerItemsResponse result = CreateSearchCustomer(PayDock.GatewayId);
         Assert.assertTrue(result.get_IsSuccess());
     }
 
@@ -94,9 +90,13 @@ public class CustomersTest {
         Assert.assertTrue(result2.get_IsSuccess());
     }
 
-
-
-
+    @Test
+    public void get4() throws Exception {
+        CustomerResponse customer = CreateBasicCustomer("test@email.com");
+        CustomerItemResponse result = new Customers().get(customer.resource.data._id);
+        CustomerPaymentSourceSearchResponse result1 = new Customers().getPaymentSources(result.resource.data._id);
+        Assert.assertTrue(result1.get_IsSuccess());
+    }
 
     @Test
     public void update() throws Exception {
@@ -106,7 +106,7 @@ public class CustomersTest {
         request.first_name = "john1";
         request.last_name = "smith1";
         PaymentSource payment_source = new PaymentSource();
-            payment_source.gateway_id = GatewayId;
+            payment_source.gateway_id = PayDock.GatewayId;
             payment_source.card_name = "Test Name";
             payment_source.card_number = "4111111111111111";
             payment_source.expire_month = "12";

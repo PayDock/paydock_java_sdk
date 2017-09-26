@@ -17,7 +17,6 @@ import java.io.FileReader;
 @RunWith(JUnit4.class)
 public class WebhooksTest {
 
-
     @Test
     public void transaction_success() throws Exception {
         String postData = loadFile("transaction_success.json");
