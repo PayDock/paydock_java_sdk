@@ -8,4 +8,4 @@
 /captures
 .externalNativeBuild
 
-src/test/java/com/paydock/javasdk/Services/PayDockKeys.java
+src/test/java/com/paydock/javasdk/Services/PayDock.java
