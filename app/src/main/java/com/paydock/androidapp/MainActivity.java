@@ -17,9 +17,6 @@ import java.math.BigDecimal;
 public class MainActivity extends Activity {
 
     public static final String TAG = "MainActivity";
-    public static String publicKey = "";
-    public static String privateKey = "";
-    public static String gatewayID = "";
 
     Button bAddCharge;
 
@@ -47,7 +44,7 @@ public class MainActivity extends Activity {
         customer.last_name = "Timberlake";
         customer.email = "test@email.com";
         PaymentSource payment_source = new PaymentSource();
-        payment_source.gateway_id = gatewayID;
+        payment_source.gateway_id = PayDock.GatewayId;
         payment_source.card_name = "Test Name";
         payment_source.card_number = "4111111111111111";
         payment_source.expire_month = "10";
