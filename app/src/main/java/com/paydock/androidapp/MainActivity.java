@@ -3,7 +3,6 @@ package com.paydock.androidapp;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -18,9 +17,9 @@ import java.math.BigDecimal;
 public class MainActivity extends Activity {
 
     public static final String TAG = "MainActivity";
-    public static String publicKey = "8b2dad5fcf18f6f504685a46af0df82216781f3b";
-    public static String privateKey = "c3de8f40ebbfff0fb74c11154274c080dfb8e3f9";
-    public static String gatewayID = "58b60d8a6da7e425d6e4f6c7";
+    public static String publicKey = "";
+    public static String privateKey = "";
+    public static String gatewayID = "";
 
     Button bAddCharge;
 
@@ -33,24 +32,15 @@ public class MainActivity extends Activity {
 
         bAddCharge = findViewById(R.id.bAddCharge);
 
-        bAddCharge.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                new AddCharge(new AddCharge.AsyncResponse(){
-                    @Override
-                    public void processFinish(ChargeResponse output) {
-                        displayPopup(output);
-                    }
-                }).execute(createCharge());
-            }
-        });
-
+        bAddCharge.setOnClickListener(v -> new AddCharge(this::displayPopup).execute(createCharge()));
 
     }
 
     public ChargeRequest createCharge() {
         ChargeRequest charge = new ChargeRequest();
         charge.currency ="AUD";
-        charge.amount =new BigDecimal(10);
+        double random = (Math.random() * 100);
+        charge.amount = BigDecimal.valueOf(random).setScale(0, BigDecimal.ROUND_HALF_UP);
         charge.reference = "Charge reference";
         Customer customer = new Customer();
         customer.first_name = "Justin";
@@ -75,7 +65,6 @@ public class MainActivity extends Activity {
                     chargeResponse.resource.data.amount.toString() + "\r\n" +
                     chargeResponse.resource.data.external_id + "\r\n" +
                     chargeResponse.resource.data.reference + "\r\n" +
-                    chargeResponse.resource.data.amount.toString() + "\r\n" +
                     chargeResponse.resource.data._id + "\r\n" +
                     chargeResponse.resource.data.status;
             Toast.makeText(getApplicationContext(), notification, Toast.LENGTH_LONG).show();

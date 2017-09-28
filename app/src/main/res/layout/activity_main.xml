@@ -20,7 +20,7 @@
             android:layout_height="45dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:text="Charge"
+            android:text="@string/charge"
             android:textSize="16sp" />
 
     </RelativeLayout>
