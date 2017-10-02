@@ -3,16 +3,17 @@ package com.paydock.javasdk.Services;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.paydock.javasdk.Tools.UrlExtensionMethods;
+import com.paydock.javasdk.Models.ChargeItemResponse;
 import com.paydock.javasdk.Models.ChargeItemsResponse;
 import com.paydock.javasdk.Models.ChargeRefundResponse;
 import com.paydock.javasdk.Models.ChargeRequest;
+import com.paydock.javasdk.Models.ChargeRequestStripeConnect;
 import com.paydock.javasdk.Models.ChargeResponse;
+import com.paydock.javasdk.Models.ChargeSearchRequest;
 import com.paydock.javasdk.Tools.HttpMethod;
 import com.paydock.javasdk.Tools.IServiceHelper;
 import com.paydock.javasdk.Tools.ServiceHelper;
-import com.paydock.javasdk.Models.ChargeItemResponse;
-import com.paydock.javasdk.Models.ChargeSearchRequest;
+import com.paydock.javasdk.Tools.UrlExtensionMethods;
 
 import java.math.BigDecimal;
 import java.net.URLEncoder;
@@ -36,6 +37,13 @@ public class Charges  implements ICharges
 
 
     public ChargeResponse add(ChargeRequest request) throws Exception {
+        String requestData = new Gson().toJson(request);
+        String responseJson = _serviceHelper.callPaydock("charges", HttpMethod.POST, requestData, false);
+        Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+        return gson.fromJson(responseJson, ChargeResponse.class);
+    }
+
+    public ChargeResponse add(ChargeRequestStripeConnect request) throws Exception {
         String requestData = new Gson().toJson(request);
         String responseJson = _serviceHelper.callPaydock("charges", HttpMethod.POST, requestData, false);
         Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
