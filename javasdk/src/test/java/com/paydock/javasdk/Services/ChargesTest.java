@@ -69,21 +69,21 @@ public class ChargesTest {
                 payment_source.card_ccv = "123";
             customer.payment_source = payment_source;
         charge.customer = customer;
-        charge.meta.stripe_transfer_group = PayDock.StripeTransferGroup;
-
-        ChargeRequestStripeConnect.Transfer[] stripe_transfer_array = new ChargeRequestStripeConnect.Transfer[2]; //create new array
-        ChargeRequestStripeConnect.Transfer transfer1 = new ChargeRequestStripeConnect.Transfer(); //set up first transfer in array
-            transfer1.amount = new BigDecimal(80);
-            transfer1.currency = "AUD";
-            transfer1.destination = PayDock.StripeDestinationAccount1;
-        ChargeRequestStripeConnect.Transfer transfer2 = new ChargeRequestStripeConnect.Transfer(); //set up second transfer in array
-            transfer2.amount = new BigDecimal(10);
-            transfer2.currency = "AUD";
-            transfer2.destination = PayDock.StripeDestinationAccount2;
+        ChargeRequestStripeConnect.MetaData meta = new ChargeRequestStripeConnect.MetaData();
+        meta.stripe_transfer_group = PayDock.StripeTransferGroup;
+            ChargeRequestStripeConnect.Transfer[] stripe_transfer_array = new ChargeRequestStripeConnect.Transfer[2]; //create new array
+            ChargeRequestStripeConnect.Transfer transfer1 = new ChargeRequestStripeConnect.Transfer(); //set up first transfer in array
+                transfer1.amount = new BigDecimal(80);
+                transfer1.currency = "AUD";
+                transfer1.destination = PayDock.StripeDestinationAccount1;
+            ChargeRequestStripeConnect.Transfer transfer2 = new ChargeRequestStripeConnect.Transfer(); //set up second transfer in array
+                transfer2.amount = new BigDecimal(10);
+                transfer2.currency = "AUD";
+                transfer2.destination = PayDock.StripeDestinationAccount2;
         stripe_transfer_array[0] = transfer1; //add the transfers to the array
         stripe_transfer_array[1] = transfer2;
-
-        charge.meta.stripe_transfer = stripe_transfer_array;
+        meta.stripe_transfer = stripe_transfer_array;
+        charge.meta = meta;
         return new Charges().add(charge);
     }
 
