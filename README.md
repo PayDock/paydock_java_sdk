@@ -6,8 +6,8 @@ For more info on the Paydock API, see our [full documentation](https://docs.payd
 
 ## Getting access to the library
 
-To download the library please visit https://bintray.com/markcardamis/javaSDK/javasdk.
-There are different dependency snippets to be inserted in your code based on your selected repository (we support Gradle, Maven or Ivy).
+To download the library please visit [JCentre](https://bintray.com/markcardamis/javaSDK/javasdk).
+There are different dependency snippets to be inserted in your code based on your selected build settings (we support Gradle, Maven or Ivy).
 
 Review the functional tests for more examples at https://github.com/PayDockDev/paydock_java_sdk/tree/master/javasdk/src/test/java/com/paydock/javasdk/Services
 
