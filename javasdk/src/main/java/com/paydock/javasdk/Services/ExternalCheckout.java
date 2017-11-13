@@ -3,6 +3,8 @@ package com.paydock.javasdk.Services;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.paydock.javasdk.Models.ExternalCheckoutRequest;
+import com.paydock.javasdk.Models.ExternalCheckoutRequestAfterPay;
+import com.paydock.javasdk.Models.ExternalCheckoutRequestZipMoney;
 import com.paydock.javasdk.Models.ExternalCheckoutResponse;
 import com.paydock.javasdk.Tools.HttpMethod;
 import com.paydock.javasdk.Tools.IServiceHelper;
@@ -23,8 +25,24 @@ public class ExternalCheckout implements IExternalCheckout {
 
     public ExternalCheckoutResponse create(ExternalCheckoutRequest request) throws Exception {
         String requestData = new Gson().toJson(request);
-        String responseJson = _serviceHelper.callPaydock("payment_sources/external_checkout", HttpMethod.POST, requestData, false);
+        String responseJson = _serviceHelper.callPaydock("payment_sources/external_checkout", HttpMethod.POST, requestData, true);
         Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
         return gson.fromJson(responseJson, ExternalCheckoutResponse.class);
     }
+
+    public ExternalCheckoutResponse create(ExternalCheckoutRequestAfterPay request) throws Exception {
+        String requestData = new Gson().toJson(request);
+        String responseJson = _serviceHelper.callPaydock("payment_sources/external_checkout", HttpMethod.POST, requestData, true);
+        Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+        return gson.fromJson(responseJson, ExternalCheckoutResponse.class);
+    }
+
+    public ExternalCheckoutResponse create(ExternalCheckoutRequestZipMoney request) throws Exception {
+        String requestData = new Gson().toJson(request);
+        String responseJson = _serviceHelper.callPaydock("payment_sources/external_checkout", HttpMethod.POST, requestData, true);
+        Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+        return gson.fromJson(responseJson, ExternalCheckoutResponse.class);
+    }
+
+
 }
