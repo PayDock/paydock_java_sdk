@@ -34,12 +34,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:27.0.0'
-    compile 'com.android.support:design:27.0.0'
-    compile 'com.android.support:support-vector-drawable:27.0.0'
-    androidTestCompile 'com.android.support:support-annotations:27.0.0'
-    androidTestCompile 'com.android.support.test:rules:1.0.1'
-    androidTestCompile 'com.android.support.test:runner:1.0.1'
-    compile 'com.paydock:javasdk:1.1.1'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.0.1'
+    implementation 'com.android.support:design:27.0.1'
+    implementation 'com.android.support:support-vector-drawable:27.0.1'
+    implementation 'com.android.support:support-annotations:27.0.1'
+    androidTestImplementation 'com.android.support.test:rules:1.0.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    implementation 'com.paydock:javasdk:1.1.2'
 }
