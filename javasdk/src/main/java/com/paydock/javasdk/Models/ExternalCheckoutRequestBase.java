@@ -2,7 +2,7 @@
 package com.paydock.javasdk.Models;
 
 
-public class ExternalCheckoutRequestBase
+abstract class ExternalCheckoutRequestBase
 {
     public String mode;
     public String gateway_id;
