@@ -61,7 +61,7 @@ public class CustomerResponse  extends Response
         public String card_scheme;
         public String ref_token;
         public String status;
-        public Date created_at = null; // new Date();
+        public Date created_at = null;
         public String _id;
         public String type;
     }

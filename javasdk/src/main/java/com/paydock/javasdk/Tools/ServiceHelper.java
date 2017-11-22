@@ -100,7 +100,11 @@ public class ServiceHelper  implements IServiceHelper
         ErrorResponse errorResponse = new ErrorResponse();
         errorResponse.http_status_code = httpCode;
         errorResponse.jsonResponse = result;
-        errorResponse.message = JsonUtils.parseResponse(result);
+        try {
+            errorResponse.message = JsonUtils.parseResponse(result);
+        } catch (Exception e) {
+            errorResponse.message = "Error connecting";
+        }
 
         throw new ResponseException(errorResponse, httpCodeString);
     }

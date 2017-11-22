@@ -6,12 +6,6 @@ import java.util.Date;
 public class NotificationLogsResponse  extends Response
 {
     public Resource resource;
-    public Resource get_resource() {
-        return resource;
-    }
-    public void set_resource(Resource value) {
-        resource = value;
-    }
 
     public static class Resource   
     {
