@@ -1,6 +1,7 @@
 
 package com.paydock.javasdk.Models;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class CustomerItemResponse  extends Response 
@@ -26,8 +27,15 @@ public class CustomerItemResponse  extends Response
         public String phone;
         public int __v;
         public Payment_Sources[] payment_sources = new Payment_Sources[]{};
+        public Statistics statistics;
         public _Service _service;
         }
+
+    public static class Statistics
+    {
+        public BigDecimal total_collected_amount;
+        public int successful_transactions;
+    }
 
     public static class _Service
     {

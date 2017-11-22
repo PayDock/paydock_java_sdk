@@ -35,12 +35,18 @@ public class CustomerItemsResponse  extends Response
         public Payment_Source[] payment_sources;
         public boolean archived;
         public Statistics statistics;
+        public _Service _service;
     }
 
     public static class Statistics   
     {
         public BigDecimal total_collected_amount;
         public int successful_transactions;
+    }
+
+    public static class _Service
+    {
+        public String default_gateway_id;
     }
 
     public static class Payment_Source   
