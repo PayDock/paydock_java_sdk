@@ -3,7 +3,7 @@ package com.paydock.javasdk.Models;
 
 import java.util.Date;
 
-public class VaultReponse extends Response
+public class VaultResponse extends Response
 {
     public Resource resource;
 

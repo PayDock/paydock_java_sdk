@@ -27,7 +27,7 @@ public class ChargeItemResponse extends Response
         public String description;
         public int __v ;
         public String external_id;
-        public Transaction[] transactions = new Transaction[]{};
+        public Transaction[] transactions;
         public boolean one_off;
         public boolean archived;
         public Customer customer;
