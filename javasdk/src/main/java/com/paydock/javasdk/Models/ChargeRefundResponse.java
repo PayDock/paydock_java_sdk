@@ -66,10 +66,11 @@ public class ChargeRefundResponse  extends Response
 
     public static class Transaction   
     {
-        public String _id;
+        public Date created_at = null;
         public BigDecimal amount;
-        public Date created_at = null; //new Date();
         public String currency;
+        public String _id;
+        public String _source_ip_address;
         public String status;
         public String type;
     }
