@@ -4,6 +4,7 @@ package com.paydock.javasdk.Models;
 public class PaymentSource
 {
     public String gateway_id;
+    public String vault_token;
     public PaymentType type = PaymentType.card;
     public String account_name;
     public String account_bsb;
