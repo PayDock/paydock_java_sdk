@@ -10,7 +10,7 @@ public class VaultItemsResponse extends Response
     public static class Resource
     {
         public String type;
-        public Data[] data = new Data[]{};
+        public Data[] data;
         public int count;
         public int limit;
         public int skip;

@@ -25,7 +25,7 @@ public class ChargeResponse  extends Response
         public String reference;
         public Date updated_at = null;
         public String user_id;
-        public Transaction[] transactions = new Transaction[]{};
+        public Transaction[] transactions;
         public boolean one_off;
         public boolean archived;
         public Customer customer;

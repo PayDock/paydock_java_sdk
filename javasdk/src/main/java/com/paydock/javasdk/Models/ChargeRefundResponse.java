@@ -22,9 +22,9 @@ public class ChargeRefundResponse  extends Response
         public Date created_at = null; //new Date();
         public String currency;
         public String external_id;
-        public Date updated_at = null; //new Date();
+        public Date updated_at = null;
         public String user_id;
-        public Transaction[] transactions = new Transaction[]{};
+        public Transaction[] transactions;
         public boolean one_off;
         public Customer customer;
         public String status;

@@ -16,8 +16,8 @@ public class CustomerResponse  extends Response
     public static class Data   
     {
         public int __v;
-        public Date created_at = null; // new Date();
-        public Date updated_at = null; // new Date();
+        public Date created_at = null;
+        public Date updated_at = null;
         public String status;
         public String default_source;
         public String first_name;
@@ -25,7 +25,7 @@ public class CustomerResponse  extends Response
         public String email;
         public String phone;
         public String _id;
-        public Payment_Sources[] payment_sources = new Payment_Sources[]{};
+        public Payment_Sources[] payment_sources;
         public Statistics statistics;
         public _Service _service;
     }

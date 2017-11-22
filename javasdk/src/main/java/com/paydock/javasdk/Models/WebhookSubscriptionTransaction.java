@@ -19,7 +19,7 @@ public class WebhookSubscriptionTransaction extends Response {
         public String currency;
         public String subscription_id;
         public int __v;
-        public Transaction[] transactions = new Transaction[]{};
+        public Transaction[] transactions;
         public boolean one_off;
         public boolean archived;
         public Customer customer;

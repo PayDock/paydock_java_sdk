@@ -26,7 +26,7 @@ public class CustomerItemResponse  extends Response
         public String email;
         public String phone;
         public int __v;
-        public Payment_Sources[] payment_sources = new Payment_Sources[]{};
+        public Payment_Sources[] payment_sources;
         public Statistics statistics;
         public _Service _service;
         }
