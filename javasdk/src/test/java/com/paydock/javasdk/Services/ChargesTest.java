@@ -50,6 +50,28 @@ public class ChargesTest {
         return new Charges().add(charge);
     }
 
+    private ChargeResponse CreateBasicChargeAuthorisation(BigDecimal chargeAmount, String gatewayId,
+                                             String customerEmail) throws Exception {
+        ChargeRequest charge = new ChargeRequest();
+        charge.currency = "AUD";
+        charge.description = "Test charge description";
+        charge.amount = chargeAmount;
+        Customer customer = new Customer();
+        customer.first_name = "Justin";
+        customer.last_name = "Timberlake";
+        customer.email = customerEmail;
+        PaymentSource payment_source = new PaymentSource();
+        payment_source.gateway_id = gatewayId;
+        payment_source.card_name = "Test Name";
+        payment_source.card_number = "4242424242424242";
+        payment_source.expire_month = "10";
+        payment_source.expire_year = "2020";
+        payment_source.card_ccv = "123";
+        customer.payment_source = payment_source;
+        charge.customer = customer;
+        return new Charges().authorise(charge);
+    }
+
     private ChargeResponse CreateStripeConnectCharge(BigDecimal chargeAmount, String gatewayId,
                                              String customerEmail) throws Exception {
         ChargeRequestStripeConnect charge = new ChargeRequestStripeConnect();
@@ -105,6 +127,37 @@ public class ChargesTest {
         ChargeResponse charge = CreateStripeConnectCharge(new BigDecimal("100"), PayDock.StripeGatewayId,
                 "test@email.com");
         Assert.assertTrue(charge.get_IsSuccess());
+    }
+
+    @Test
+    public void authorise() throws Exception {
+        ChargeResponse charge = CreateBasicChargeAuthorisation(new BigDecimal("8"), PayDock.StripeGatewayId,
+                "test@email.com");
+        Assert.assertTrue(charge.get_IsSuccess());
+    }
+
+    @Test
+    public void capture() throws Exception {
+        ChargeResponse charge = CreateBasicChargeAuthorisation(new BigDecimal("14"), PayDock.StripeGatewayId,
+                "test@email.com");
+        ChargeResponse result = new Charges().capture(charge.resource.data._id);
+        Assert.assertTrue(result.get_IsSuccess());
+    }
+
+    @Test
+    public void capture1() throws Exception {
+        ChargeResponse charge = CreateBasicChargeAuthorisation(new BigDecimal("7"), PayDock.StripeGatewayId,
+                "test@email.com");
+        ChargeResponse result = new Charges().capture(charge.resource.data._id, new BigDecimal("7"));
+        Assert.assertTrue(result.get_IsSuccess());
+    }
+
+    @Test
+    public void cancelauthorisation() throws Exception {
+        ChargeResponse charge = CreateBasicChargeAuthorisation(new BigDecimal("4"), PayDock.StripeGatewayId,
+                "test@email.com");
+        ChargeResponse result = new Charges().cancelauthorisation(charge.resource.data._id);
+        Assert.assertTrue(result.get_IsSuccess());
     }
 
     @Test
