@@ -58,7 +58,7 @@ public class GatewaysTest {
         GatewayResponse gateway = addGateway();
         GatewayUpdateRequest request = new GatewayUpdateRequest();
         request._id = gateway.resource.data._id;
-        request.name = "BraintreeTesting2";
+        request.name = PayDock.GatewayName + "Updated";
         GatewayItemResponse result = new Gateways().update(request);
         Assert.assertTrue(result.get_IsSuccess());
 
@@ -76,7 +76,7 @@ public class GatewaysTest {
         GatewayItemsResponse Gateway = new Gateways().get();
         GatewayData[] GatewayData = Gateway.resource.data;
         for (int i = 0; i < Gateway.resource.count; i++) {
-            if (GatewayData[i].name.contains("BraintreeTesting"))
+            if (GatewayData[i].name.contains(PayDock.GatewayName))
                 new Gateways().delete(GatewayData[i]._id);
         }
         Assert.assertTrue(true);
