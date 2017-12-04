@@ -9,6 +9,7 @@ import com.paydock.javasdk.Models.ChargeResponse;
 import com.paydock.javasdk.Models.ChargeSearchRequest;
 import com.paydock.javasdk.Models.Customer;
 import com.paydock.javasdk.Models.PaymentSource;
+import com.paydock.javasdk.Models.PaymentType;
 import com.paydock.javasdk.PayDock;
 
 import org.junit.Assert;
@@ -34,7 +35,7 @@ public class ChargesTest {
         charge.currency = "AUD";
         charge.description = "Test charge description";
         charge.amount = chargeAmount;
-            Customer customer = new Customer();
+        Customer customer = new Customer();
             customer.first_name = "Justin";
             customer.last_name = "Timberlake";
             customer.email = customerEmail;
@@ -50,6 +51,29 @@ public class ChargesTest {
         return new Charges().add(charge);
     }
 
+    private ChargeResponse CreateBankCharge(BigDecimal chargeAmount, String gatewayId,
+                                             String customerEmail) throws Exception {
+        ChargeRequest charge = new ChargeRequest();
+        charge.currency = "AUD";
+        charge.description = "Test bank description";
+        charge.amount = chargeAmount;
+        Customer customer = new Customer();
+            customer.first_name = "Justin";
+            customer.last_name = "Timberlake";
+            customer.email = customerEmail;
+            PaymentSource payment_source = new PaymentSource();
+                payment_source.gateway_id = gatewayId;
+                payment_source.type = PaymentType.bsb;
+                payment_source.account_name = "Mark Test";
+                payment_source.account_number = "064000";
+                payment_source.account_bsb = "064000";
+                payment_source.account_holder_type = "personal";
+                payment_source.account_bank_name = "Bank";
+            customer.payment_source = payment_source;
+        charge.customer = customer;
+        return new Charges().add(charge);
+    }
+
     private ChargeResponse CreateBasicChargeAuthorisation(BigDecimal chargeAmount, String gatewayId,
                                              String customerEmail) throws Exception {
         ChargeRequest charge = new ChargeRequest();
@@ -57,17 +81,17 @@ public class ChargesTest {
         charge.description = "Test charge description";
         charge.amount = chargeAmount;
         Customer customer = new Customer();
-        customer.first_name = "Justin";
-        customer.last_name = "Timberlake";
-        customer.email = customerEmail;
-        PaymentSource payment_source = new PaymentSource();
-        payment_source.gateway_id = gatewayId;
-        payment_source.card_name = "Test Name";
-        payment_source.card_number = "4242424242424242";
-        payment_source.expire_month = "10";
-        payment_source.expire_year = "2020";
-        payment_source.card_ccv = "123";
-        customer.payment_source = payment_source;
+            customer.first_name = "Justin";
+            customer.last_name = "Timberlake";
+            customer.email = customerEmail;
+            PaymentSource payment_source = new PaymentSource();
+                payment_source.gateway_id = gatewayId;
+                payment_source.card_name = "Test Name";
+                payment_source.card_number = "4242424242424242";
+                payment_source.expire_month = "10";
+                payment_source.expire_year = "2020";
+                payment_source.card_ccv = "123";
+            customer.payment_source = payment_source;
         charge.customer = customer;
         return new Charges().authorise(charge);
     }
@@ -78,7 +102,7 @@ public class ChargesTest {
         charge.currency = "AUD";
         charge.description = "Test Stripe description";
         charge.amount = chargeAmount;
-            Customer customer = new Customer();
+        Customer customer = new Customer();
             customer.first_name = "Justin";
             customer.last_name = "Timberlake";
             customer.email = customerEmail;
@@ -115,6 +139,13 @@ public class ChargesTest {
     @Test
     public void add() throws Exception {
         ChargeResponse charge = CreateBasicCharge(new BigDecimal("7"), PayDock.GatewayId,
+                "test@email.com");
+        Assert.assertTrue(charge.get_IsSuccess());
+    }
+
+    @Test
+    public void addBank() throws Exception {
+        ChargeResponse charge = CreateBankCharge(new BigDecimal("7"), PayDock.BankGatewayId,
                 "test@email.com");
         Assert.assertTrue(charge.get_IsSuccess());
     }
