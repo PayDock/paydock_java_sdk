@@ -27,22 +27,22 @@ public class ServiceHelperTest {
 
     @Test
     public void testTimeoutPasses() throws Exception {
-        String message = callPaydock("charges", HttpMethod.GET,"",false, 30000);
-        Assert.assertTrue(!message.equals("connect timed out"));
+        String message = callPaydock(30000);
+        Assert.assertFalse(message.equals("connect timed out") || message.equals("Read timed out"));
     }
+
 
     @Test
     public void testTimeoutFails() throws Exception {
-        String message = callPaydock("charges", HttpMethod.GET,"",false, 1);
-        Assert.assertTrue(message.equals("connect timed out"));
+        String message = callPaydock(5);
+        Assert.assertTrue(message.equals("connect timed out") || message.equals("Read timed out"));
     }
 
 
-    private String callPaydock(String endpoint, HttpMethod method, String json, boolean excludeSecretKey,
-                               int HTTP_REQUEST_TIMEOUT) throws Exception {
+    private String callPaydock(int HTTP_REQUEST_TIMEOUT) throws Exception {
 
-        String result = null;
-        String url = Config.baseUrl() + endpoint;
+        String result;
+        String url = Config.baseUrl() + "charges";
         URL obj = new URL(url);
         HttpsURLConnection request = (HttpsURLConnection) obj.openConnection();
         SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
@@ -50,14 +50,9 @@ public class ServiceHelperTest {
         request.setSSLSocketFactory(sslContext.getSocketFactory());
         request.setConnectTimeout(HTTP_REQUEST_TIMEOUT);
         request.setReadTimeout(HTTP_REQUEST_TIMEOUT);
-        String methodString  = method.toString();
+        String methodString  = "GET";
         request.setRequestMethod(methodString);
-        request.setRequestProperty("content-type","application/json");
-        if (!excludeSecretKey) {
-            request.setRequestProperty("x-user-secret-key", Config.getSecretKey());
-        } else {
-            request.setRequestProperty("x-user-public-key", Config.getPublicKey());
-        }
+        request.setRequestProperty("x-user-secret-key", "");
         request.setUseCaches (false);
 
         try
