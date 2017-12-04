@@ -92,7 +92,7 @@ public class ChargesTest {
             customer.payment_source = payment_source;
         charge.customer = customer;
         ChargeRequestStripeConnect.MetaData meta = new ChargeRequestStripeConnect.MetaData();
-        meta.stripe_transfer_group = PayDock.StripeTransferGroup;
+        meta.stripe_transfer_group = PayDock.StripeTransferGroup; // stripe transfer group id
             ChargeRequestStripeConnect.Transfer transfer1 = new ChargeRequestStripeConnect.Transfer(); //set up first transfer in array
                 transfer1.amount = new BigDecimal(80);
                 transfer1.currency = "AUD";
