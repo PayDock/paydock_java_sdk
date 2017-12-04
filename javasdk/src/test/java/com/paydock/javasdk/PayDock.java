@@ -12,4 +12,10 @@ public class PayDock {
     public final static String StripeTransferGroup = "58cb697d498c4b1a65025628";
     public final static String StripeDestinationAccount1 = "58cb697d498c4b1a65025628";
     public final static String StripeDestinationAccount2 = "58cb697d498c4b1a65025628";
+    public final static String GatewayType = "Brain";
+    public final static String GatewayName = "BraintreeTesting";
+    public final static String GatewayMerchant = "r7pcwvkbkgjfzk99";
+    public final static String GatewayUsername = "n8nktcb42fy8ttgt";
+    public final static String GatewayPassword = "c865e194d750148b93284c0c026e5f2a";
+
 }

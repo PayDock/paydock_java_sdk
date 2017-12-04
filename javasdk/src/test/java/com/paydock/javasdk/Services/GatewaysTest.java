@@ -25,11 +25,11 @@ public class GatewaysTest {
 
     private GatewayResponse addGateway() throws Exception {
         GatewayRequest gateway = new GatewayRequest();
-            gateway.type = "Brain";
-            gateway.name = "BraintreeTesting";
-            gateway.merchant = "r7pcwvkbkgjfzk99";
-            gateway.username = "n8nktcb42fy8ttgt";
-            gateway.password = "c865e194d750148b93284c0c026e5f2a";
+            gateway.type = PayDock.GatewayType;
+            gateway.name = PayDock.GatewayName;
+            gateway.merchant = PayDock.GatewayMerchant;
+            gateway.username = PayDock.GatewayUsername;
+            gateway.password = PayDock.GatewayPassword;
         return new Gateways().add(gateway);
     }
 
