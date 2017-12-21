@@ -19,6 +19,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
+import java.util.Date;
 
 @SuppressWarnings("SameParameterValue")
 @RunWith(JUnit4.class)
@@ -133,6 +135,16 @@ public class ChargesTest {
     private ChargeItemsResponse CreateSearchCharge(String gatewayId) throws Exception {
         ChargeSearchRequest request = new ChargeSearchRequest();
         request.gateway_id = gatewayId;
+
+        Calendar cal1 = Calendar.getInstance();
+        cal1.set(2017,Calendar.JANUARY,5); //Get charges from the 5th of January from 2017
+        Date date1 = cal1.getTime(); //Convert Calender into Date
+
+        Date date2 = new Date(); //Get Date today
+
+        request.created_at_from = date1;
+        request.created_at_to = date2;
+
         return new Charges().get(request);
     }
 
