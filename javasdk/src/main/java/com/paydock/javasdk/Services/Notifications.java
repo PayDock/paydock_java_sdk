@@ -39,7 +39,7 @@ public class Notifications implements INotifications
 
     public NotificationTemplateResponse updateTemplate(NotificationTemplateUpdateRequest request) throws Exception {
         String requestData = new Gson().toJson(request);
-        String responseJson = _serviceHelper.callPaydock("notifications/templates" + request._id, HttpMethod.POST, requestData, false);
+        String responseJson = _serviceHelper.callPaydock("notifications/templates/" + request._id, HttpMethod.POST, requestData, false);
         Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
         return gson.fromJson(responseJson, NotificationTemplateResponse.class);
     }
