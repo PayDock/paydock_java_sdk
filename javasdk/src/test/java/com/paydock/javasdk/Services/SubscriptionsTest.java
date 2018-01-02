@@ -18,6 +18,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.Date;
 
 @SuppressWarnings("SameParameterValue")
@@ -51,6 +52,7 @@ public class SubscriptionsTest {
             schedule.interval = "day";
             schedule.frequency = 1;
             schedule.start_date = new Date();
+            schedule.end_date = Date.from(Instant.parse("2019-05-05T12:00:00Z"));
             schedule.end_transactions = 2;
         subscription.schedule = schedule;
         return new Subscriptions().add(subscription);
