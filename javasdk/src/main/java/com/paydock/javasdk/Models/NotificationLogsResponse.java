@@ -10,13 +10,13 @@ public class NotificationLogsResponse  extends Response
     public static class Resource   
     {
         public String type;
-        public Datum[] data;
+        public Data[] data;
         public int count;
         public int limit;
         public int skip;
         }
 
-    public static class Datum   
+    public static class Data
     {
         public Date created_at = null;
         public boolean success;
@@ -24,7 +24,7 @@ public class NotificationLogsResponse  extends Response
         public String destination;
         public String notification_id;
         public String parent_id;
-        public String _event;
+        public String event;
         public String response_status;
         public String _id;
         public boolean archived;

@@ -8,6 +8,7 @@ import com.paydock.javasdk.Models.NotificationLogsResponse;
 import com.paydock.javasdk.Models.NotificationTemplateRequest;
 import com.paydock.javasdk.Models.NotificationTemplateResponse;
 import com.paydock.javasdk.Models.NotificationTemplateUpdateRequest;
+import com.paydock.javasdk.Models.NotificationTemplatesResponse;
 import com.paydock.javasdk.Models.NotificationTriggerItemsResponse;
 import com.paydock.javasdk.Models.NotificationTriggerRequest;
 import com.paydock.javasdk.Models.NotificationTriggerResponse;
@@ -35,6 +36,17 @@ public class Notifications implements INotifications
         return gson.fromJson(responseJson, NotificationTemplateResponse.class);
     }
 
+    public NotificationTemplatesResponse getNotifications() throws Exception {
+        String responseJson = _serviceHelper.callPaydock("notifications/templates", HttpMethod.GET, "", false);
+        Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+        return gson.fromJson(responseJson, NotificationTemplatesResponse.class);
+    }
+
+    public NotificationTemplateResponse getNotification(String notificationId) throws Exception {
+        String responseJson = _serviceHelper.callPaydock("notifications/templates/" + notificationId, HttpMethod.GET, "", false);
+        Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+        return gson.fromJson(responseJson, NotificationTemplateResponse.class);
+    }
 
 
     public NotificationTemplateResponse updateTemplate(NotificationTemplateUpdateRequest request) throws Exception {
@@ -85,7 +97,7 @@ public class Notifications implements INotifications
         String url = "notifications/logs/";
         url = UrlExtensionMethods.appendParameter(url, "_id", request._id);
         url = UrlExtensionMethods.appendParameter(url, "success", request.success);
-        url = UrlExtensionMethods.appendParameter(url, "event", request.eventTrigger);
+        url = UrlExtensionMethods.appendParameter(url, "event", request.event);
         url = UrlExtensionMethods.appendParameter(url, "type", request.type);
         url = UrlExtensionMethods.appendParameter(url, "created_at.from", request.created_at_from);
         url = UrlExtensionMethods.appendParameter(url, "created_at.to", request.created_at_to);
