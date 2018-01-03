@@ -14,17 +14,17 @@ import com.paydock.javasdk.Models.NotificationTriggerResponse;
 
 public interface INotifications
 {
-    NotificationTemplateResponse addTemplate(NotificationTemplateRequest request) throws Exception ;
     NotificationTriggerResponse addTrigger(NotificationTriggerRequest request) throws Exception ;
-    NotificationTriggerResponse deleteLog(String notificationLogId) throws Exception ;
     NotificationTemplateResponse deleteTemplate(String notificationTemplateId) throws Exception ;
     NotificationTriggerResponse deleteTrigger(String notificationTriggerId) throws Exception ;
-    NotificationLogResponse getLog(String logId) throws Exception ;
+    NotificationLogResponse getLog(String notificationLogId) throws Exception ;
     NotificationLogsResponse getLogs(NotificationLogSearchRequest request) throws Exception ;
+    NotificationLogResponse deleteLog(String notificationLogId) throws Exception ;
     NotificationTriggerResponse getTrigger(String notificationTriggerId) throws Exception ;
+    NotificationTemplateResponse addTemplate(NotificationTemplateRequest request) throws Exception ;
     NotificationTriggerItemsResponse getTriggers() throws Exception ;
-    NotificationTemplatesResponse getNotifications() throws Exception ;
-    NotificationTemplateResponse getNotification(String notificationId) throws Exception ;
+    NotificationTemplatesResponse getTemplates() throws Exception ;
+    NotificationTemplateResponse getTemplate(String notificationId) throws Exception ;
     NotificationTemplateResponse updateTemplate(NotificationTemplateUpdateRequest request) throws Exception ;
 }
 

@@ -37,13 +37,13 @@ public class Notifications implements INotifications
         return gson.fromJson(responseJson, NotificationTemplateResponse.class);
     }
 
-    public NotificationTemplatesResponse getNotifications() throws Exception {
+    public NotificationTemplatesResponse getTemplates() throws Exception {
         String responseJson = _serviceHelper.callPaydock("notifications/templates", HttpMethod.GET, "", false);
         Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
         return gson.fromJson(responseJson, NotificationTemplatesResponse.class);
     }
 
-    public NotificationTemplateResponse getNotification(String notificationId) throws Exception {
+    public NotificationTemplateResponse getTemplate(String notificationId) throws Exception {
         String responseJson = _serviceHelper.callPaydock("notifications/templates/" + notificationId, HttpMethod.GET, "", false);
         Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
         return gson.fromJson(responseJson, NotificationTemplateResponse.class);
@@ -93,9 +93,9 @@ public class Notifications implements INotifications
         return gson.fromJson(responseJson, NotificationTriggerResponse.class);
     }
 
-    public NotificationLogResponse getLog(String logId) throws Exception {
+    public NotificationLogResponse getLog(String notificationLogId) throws Exception {
         String url = "notifications/logs/";
-        url = UrlExtensionMethods.appendParameter(url, "_id", logId);
+        url = UrlExtensionMethods.appendParameter(url, "_id", notificationLogId);
         String responseJson = _serviceHelper.callPaydock(url, HttpMethod.GET, "", false);
         Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
         return gson.fromJson(responseJson, NotificationLogResponse.class);
@@ -116,10 +116,10 @@ public class Notifications implements INotifications
     }
 
 
-    public NotificationTriggerResponse deleteLog(String notificationLogId) throws Exception {
+    public NotificationLogResponse deleteLog(String notificationLogId) throws Exception {
         String responseJson = _serviceHelper.callPaydock("notifications/logs/" + notificationLogId, HttpMethod.DELETE, "", false);
         Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
-        return gson.fromJson(responseJson, NotificationTriggerResponse.class);
+        return gson.fromJson(responseJson, NotificationLogResponse.class);
     }
 
 }
