@@ -11,6 +11,9 @@ public class NotificationTemplatesResponse extends Response
     {
         public String type;
         public Data[] data;
+        public int count;
+        public int limit;
+        public int skip;
     }
 
     public static class Data   
