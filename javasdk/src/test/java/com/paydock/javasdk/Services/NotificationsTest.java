@@ -8,12 +8,14 @@ import com.paydock.javasdk.Models.NotificationLogsResponse;
 import com.paydock.javasdk.Models.NotificationTemplateRequest;
 import com.paydock.javasdk.Models.NotificationTemplateResponse;
 import com.paydock.javasdk.Models.NotificationTemplateUpdateRequest;
+import com.paydock.javasdk.Models.NotificationTemplatesResponse;
 import com.paydock.javasdk.Models.NotificationTriggerItemsResponse;
 import com.paydock.javasdk.Models.NotificationTriggerRequest;
 import com.paydock.javasdk.Models.NotificationTriggerResponse;
 import com.paydock.javasdk.Models.NotificationTriggerType;
 import com.paydock.javasdk.PayDock;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,25 +47,38 @@ public class NotificationsTest {
     private NotificationTriggerResponse add_notification_trigger(String templateID) throws Exception {
         NotificationTriggerRequest request = new NotificationTriggerRequest();
         request.type = NotificationTriggerType.webhook;
-        request.destination = "https://www.paydock.com";
+        request.destination = PayDock.webhookURL;
         request.template_id = templateID;
         request.event = NotificationEvent.transaction_success;
         return new Notifications().addTrigger(request);
     }
 
-    private NotificationLogsResponse notification_log_search(NotificationLogSearchRequest request) throws Exception {
-        request.success = true;
-        request.event = "transaction_success";
-        request.type = "https://www.paydock.com";
-        request.created_at_from = Date.from(Instant.parse("2017-12-05T12:00:00Z"));
-        request.created_at_to = Date.from(Instant.parse("2018-01-01T12:00:00Z"));
-
+    private NotificationLogsResponse notification_log_search() throws Exception {
+        NotificationLogSearchRequest request = new NotificationLogSearchRequest();
+            request.success = true;
+            request.event = "transaction_success";
+            request.created_at_from = Date.from(Instant.parse("2017-12-05T12:00:00Z"));
+            request.created_at_to = Date.from(Instant.parse("2018-01-01T12:00:00Z"));
         return new Notifications().getLogs(request);
     }
 
     @Test
     public void addTemplate1() throws Exception {
         NotificationTemplateResponse response = add_template();
+        Assert.assertTrue(response.get_IsSuccess());
+    }
+
+    @Test
+    public void getTemplate() throws Exception {
+        NotificationTemplatesResponse response = new Notifications().getTemplates();
+        Assert.assertTrue(response.get_IsSuccess());
+    }
+
+    @Test
+    public void getTemplate1() throws Exception {
+        NotificationTemplateResponse template = add_template();
+        NotificationTemplateResponse response = new Notifications().getTemplate(template.resource.data._id);
+
         Assert.assertTrue(response.get_IsSuccess());
     }
 
@@ -119,21 +134,46 @@ public class NotificationsTest {
     @Test
     public void get_user_notification_log() throws Exception
     {
-        NotificationLogResponse response = new Notifications().getLog(PayDock.logId);
+        NotificationLogResponse response = new Notifications().getLog(PayDock.notificationlogId);
         Assert.assertTrue(response.get_IsSuccess());
     }
 
+    @Test
+    public void delete_notification_log() throws Exception
+    {
+        NotificationLogsResponse response = notification_log_search();
+        if (response.resource.count > 0) {
+            NotificationLogResponse response1 = new Notifications().deleteLog(response.resource.data[0]._id);
+            Assert.assertTrue(response1.get_IsSuccess());
+        } else {
+           Assert.fail();
+        }
+    }
 
     @Test
     public void get_user_notification_log187() throws Exception {
-        NotificationLogSearchRequest request = new NotificationLogSearchRequest();
-            request.event = "transaction_success";
-            request.success = true;
-            request.type = "https://www.paydock.com";
-            request.created_at_from = Date.from(Instant.parse("2018-01-01T12:00:00Z"));
-            request.created_at_to = Date.from(Instant.parse("2018-01-03T12:00:00Z"));
-        NotificationLogsResponse response = new Notifications().getLogs(request);
+        NotificationLogsResponse response = notification_log_search();
         Assert.assertTrue(response.get_IsSuccess());
+    }
+
+    @After
+    public void cleanup() throws Exception {
+        NotificationTemplatesResponse response = new Notifications().getTemplates();
+        for (int i = 0; i < response.resource.count; i++) {
+            if ((response.resource.data[i].label.contains(PayDock.addNotificationTemplateName)) ||
+                    (response.resource.data[i].label.contains(PayDock.editNotificationTemplateName))) {
+                new Notifications().deleteTemplate(response.resource.data[i]._id);
+            }
+        }
+
+        NotificationTriggerItemsResponse result = new Notifications().getTriggers();
+        for (int i = 0; i < result.resource.count; i++) {
+            if ((result.resource.data[i].destination.contains(PayDock.webhookURLhost)) ||
+                    (result.resource.data[i].destination.contains("paydock.com"))) {
+                new Notifications().deleteTrigger(result.resource.data[i]._id);
+            }
+        }
+
     }
 
 }
