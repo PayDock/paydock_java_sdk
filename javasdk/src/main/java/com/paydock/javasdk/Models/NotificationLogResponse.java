@@ -15,6 +15,7 @@ public class NotificationLogResponse extends Response
 
     public static class Data
     {
+        public String company_id;
         public Date created_at = null;
         public boolean success;
         public String type;
@@ -23,6 +24,7 @@ public class NotificationLogResponse extends Response
         public String parent_id;
         public String event;
         public String response_status;
+        public int __v;
         public String _id;
         public boolean archived;
     }
