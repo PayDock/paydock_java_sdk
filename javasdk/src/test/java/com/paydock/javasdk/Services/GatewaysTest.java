@@ -79,7 +79,6 @@ public class GatewaysTest {
             if (GatewayData[i].name.contains(PayDock.GatewayName))
                 new Gateways().delete(GatewayData[i]._id);
         }
-        Assert.assertTrue(true);
     }
 
 }
