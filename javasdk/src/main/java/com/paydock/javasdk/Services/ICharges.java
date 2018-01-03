@@ -16,6 +16,7 @@ public interface ICharges
 {
     ChargeResponse add(ChargeRequest request) throws Exception;
     ChargeResponse add(ChargeRequestStripeConnect request) throws Exception;
+    ChargeRefundResponse archive(String chargeId) throws Exception;
     ChargeResponse authorise(ChargeRequest request) throws Exception;
     ChargeResponse capture(String chargeId) throws Exception;
     ChargeResponse capture(String chargeId, BigDecimal amount) throws Exception;
@@ -24,7 +25,7 @@ public interface ICharges
     ChargeItemResponse get(String chargeId) throws Exception;
     ChargeItemsResponse get(ChargeSearchRequest request) throws Exception;
     ChargeRefundResponse refund(String chargeId, BigDecimal amount) throws Exception;
-    ChargeRefundResponse archive(String chargeId) throws Exception;
+
 }
 
 
