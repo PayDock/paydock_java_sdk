@@ -1,7 +1,8 @@
 
 package com.paydock.javasdk.Services;
 
-import com.paydock.javasdk.Models.NotificationLogRequest;
+import com.paydock.javasdk.Models.NotificationLogResponse;
+import com.paydock.javasdk.Models.NotificationLogSearchRequest;
 import com.paydock.javasdk.Models.NotificationLogsResponse;
 import com.paydock.javasdk.Models.NotificationTemplateRequest;
 import com.paydock.javasdk.Models.NotificationTemplateResponse;
@@ -18,7 +19,8 @@ public interface INotifications
     NotificationTriggerResponse deleteLog(String notificationLogId) throws Exception ;
     NotificationTemplateResponse deleteTemplate(String notificationTemplateId) throws Exception ;
     NotificationTriggerResponse deleteTrigger(String notificationTriggerId) throws Exception ;
-    NotificationLogsResponse getLogs(NotificationLogRequest request) throws Exception ;
+    NotificationLogResponse getLog(String logId) throws Exception ;
+    NotificationLogsResponse getLogs(NotificationLogSearchRequest request) throws Exception ;
     NotificationTriggerResponse getTrigger(String notificationTriggerId) throws Exception ;
     NotificationTriggerItemsResponse getTriggers() throws Exception ;
     NotificationTemplatesResponse getNotifications() throws Exception ;

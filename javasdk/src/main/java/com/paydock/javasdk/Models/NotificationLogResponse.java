@@ -3,17 +3,14 @@ package com.paydock.javasdk.Models;
 
 import java.util.Date;
 
-public class NotificationLogsResponse  extends Response
+public class NotificationLogResponse extends Response
 {
     public Resource resource;
 
     public static class Resource   
     {
         public String type;
-        public Data[] data;
-        public int count;
-        public int limit;
-        public int skip;
+        public Data data;
     }
 
     public static class Data

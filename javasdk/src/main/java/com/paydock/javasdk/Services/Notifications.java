@@ -3,7 +3,8 @@ package com.paydock.javasdk.Services;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.paydock.javasdk.Models.NotificationLogRequest;
+import com.paydock.javasdk.Models.NotificationLogResponse;
+import com.paydock.javasdk.Models.NotificationLogSearchRequest;
 import com.paydock.javasdk.Models.NotificationLogsResponse;
 import com.paydock.javasdk.Models.NotificationTemplateRequest;
 import com.paydock.javasdk.Models.NotificationTemplateResponse;
@@ -92,10 +93,16 @@ public class Notifications implements INotifications
         return gson.fromJson(responseJson, NotificationTriggerResponse.class);
     }
 
-
-    public NotificationLogsResponse getLogs(NotificationLogRequest request) throws Exception {
+    public NotificationLogResponse getLog(String logId) throws Exception {
         String url = "notifications/logs/";
-        url = UrlExtensionMethods.appendParameter(url, "_id", request._id);
+        url = UrlExtensionMethods.appendParameter(url, "_id", logId);
+        String responseJson = _serviceHelper.callPaydock(url, HttpMethod.GET, "", false);
+        Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+        return gson.fromJson(responseJson, NotificationLogResponse.class);
+    }
+
+    public NotificationLogsResponse getLogs(NotificationLogSearchRequest request) throws Exception {
+        String url = "notifications/logs/";
         url = UrlExtensionMethods.appendParameter(url, "success", request.success);
         url = UrlExtensionMethods.appendParameter(url, "event", request.event);
         url = UrlExtensionMethods.appendParameter(url, "type", request.type);

@@ -3,9 +3,8 @@ package com.paydock.javasdk.Models;
 
 import java.util.Date;
 
-public class NotificationLogRequest   
+public class NotificationLogSearchRequest
 {
-    public String _id;
     public Boolean success;
     public String event;
     public String type;
