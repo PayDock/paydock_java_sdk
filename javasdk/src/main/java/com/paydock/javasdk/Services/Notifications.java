@@ -122,6 +122,11 @@ public class Notifications implements INotifications
         return gson.fromJson(responseJson, NotificationLogResponse.class);
     }
 
+    public NotificationLogResponse resendNotification(String notificationLogId) throws Exception {
+        String responseJson = _serviceHelper.callPaydock("notifications/logs/" + notificationLogId, HttpMethod.PUT, "", false);
+        Gson gson = new GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create();
+        return gson.fromJson(responseJson, NotificationLogResponse.class);
+    }
 }
 
 

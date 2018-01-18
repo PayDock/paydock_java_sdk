@@ -156,6 +156,12 @@ public class NotificationsTest {
         Assert.assertTrue(response.get_IsSuccess());
     }
 
+    @Test
+    public void resendTheNotificationLog() throws Exception {
+        NotificationLogResponse response = new Notifications().resendNotification(PayDock.notificationlogId);
+        Assert.assertTrue(response.get_IsSuccess());
+    }
+
     @After
     public void cleanup() throws Exception {
         NotificationTemplatesResponse response = new Notifications().getTemplates();

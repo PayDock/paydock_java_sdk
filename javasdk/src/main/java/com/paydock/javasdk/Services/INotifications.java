@@ -26,6 +26,7 @@ public interface INotifications
     NotificationTriggerResponse getTrigger(String notificationTriggerId) throws Exception ;
     NotificationTriggerItemsResponse getTriggers() throws Exception ;
     NotificationTemplateResponse updateTemplate(NotificationTemplateUpdateRequest request) throws Exception ;
+    NotificationLogResponse resendNotification(String notificationLogId) throws Exception;
 }
 
 
